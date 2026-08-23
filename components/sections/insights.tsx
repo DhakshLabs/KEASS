@@ -70,17 +70,33 @@ function ArticleBlock({
           className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
           sizes={featured ? "(min-width: 1024px) 55vw, 100vw" : "280px"}
         />
+        {featured ? (
+          <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/80 to-transparent px-6 pt-16 pb-5 text-white">
+            <span className="block text-[0.65rem] tracking-[0.18em] text-white/80 uppercase">
+              {article.category}
+            </span>
+            <span className="mt-2 block text-2xl tracking-tight md:text-3xl">
+              {article.title}
+            </span>
+          </span>
+        ) : null}
       </Link>
-      <div className={featured ? "mt-6" : "sm:col-span-3"}>
-        <p className="text-[0.65rem] tracking-[0.18em] text-keaas uppercase">
-          {article.category}
-        </p>
-        <h3 className={`${featured ? "mt-3 text-2xl md:text-3xl" : "mt-2 text-xl"} tracking-tight text-ink`}>
-          <Link href={`/insights/${article.slug}`} className="hover:text-keaas">
-            {article.title}
-          </Link>
-        </h3>
-        <p className="mt-3 text-xs tracking-[0.08em] text-muted uppercase">
+      <div className={featured ? "mt-5" : "sm:col-span-3"}>
+        {featured ? (
+          <h3 className="sr-only">{article.title}</h3>
+        ) : (
+          <>
+            <p className="text-[0.65rem] tracking-[0.18em] text-keaas uppercase">
+              {article.category}
+            </p>
+            <h3 className="mt-2 text-xl tracking-tight text-ink">
+              <Link href={`/insights/${article.slug}`} className="hover:text-keaas">
+                {article.title}
+              </Link>
+            </h3>
+          </>
+        )}
+        <p className="text-xs tracking-[0.08em] text-muted uppercase">
           {article.date} · {article.readTime} read
         </p>
         <Link

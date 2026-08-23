@@ -42,7 +42,7 @@ export function ContactForm() {
         autoComplete="tel"
       />
       <label className="block pt-4">
-        <span className="eyebrow text-white/60">What expertise do you need?</span>
+        <span className="eyebrow text-white/80">What expertise do you need?</span>
         <select name="expertise" required defaultValue="" className="form-field">
           <option value="" disabled>
             Select a discipline
@@ -56,7 +56,7 @@ export function ContactForm() {
         </select>
       </label>
       <label className="block pt-4">
-        <span className="eyebrow text-white/60">Message</span>
+        <span className="eyebrow text-white/80">Message</span>
         <textarea
           name="message"
           rows={4}
@@ -98,7 +98,7 @@ function Field({
 }) {
   return (
     <label className="block pt-4">
-      <span className="eyebrow text-white/60">{label}</span>
+      <span className="eyebrow text-white/80">{label}</span>
       <input
         name={name}
         type={type}
