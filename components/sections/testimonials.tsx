@@ -37,8 +37,7 @@ export function Testimonials() {
                 <p className="text-[0.7rem] tracking-[0.2em] text-keaas uppercase">
                   {featured.company}
                 </p>
-                <p className="mt-2 text-sm text-ink-2">{featured.name}</p>
-                <p className="text-sm text-muted">{featured.role}</p>
+                <p className="mt-2 text-sm text-muted">{featured.role}</p>
               </footer>
             </blockquote>
           </Reveal>
@@ -52,9 +51,7 @@ export function Testimonials() {
                     <p className="text-[0.68rem] tracking-[0.18em] text-keaas uppercase">
                       {item.company}
                     </p>
-                    <p className="mt-1 text-sm text-muted">
-                      {item.name}, {item.role}
-                    </p>
+                    <p className="mt-1 text-sm text-muted">{item.role}</p>
                   </footer>
                 </blockquote>
               </Reveal>

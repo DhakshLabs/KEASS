@@ -1,8 +1,5 @@
 import Image from "next/image";
 import { Button, Container, Eyebrow, Reveal } from "@/components/ui";
-import { leaders } from "@/lib/data";
-
-const strip = leaders.slice(0, 3);
 
 export function About() {
   return (
@@ -44,34 +41,16 @@ export function About() {
               <div className="img-reveal relative aspect-[4/3] overflow-hidden bg-mist">
                 <Image
                   src="/images/about-office.jpg"
-                  alt="KEAAS consultants in a quiet enterprise delivery room"
+                  alt="KEAAS delivery room in a premium enterprise office"
                   fill
                   className="object-cover"
                   sizes="(min-width: 1024px) 55vw, 100vw"
                 />
               </div>
-              <figcaption className="mt-5 flex flex-col gap-5 border-t border-line pt-5 sm:flex-row sm:items-center sm:justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="flex -space-x-3">
-                    {strip.map((leader) => (
-                      <Image
-                        key={leader.slug}
-                        src={leader.image}
-                        alt={leader.name}
-                        width={44}
-                        height={44}
-                        className="h-11 w-11 rounded-full object-cover ring-2 ring-paper"
-                      />
-                    ))}
-                  </div>
-                  <p className="eyebrow text-muted">Leadership</p>
-                </div>
-                <p className="max-w-md text-sm leading-6 text-ink-2">
-                  “System Integrators do not need more résumés. They need
-                  experts who can sit inside a live programme and move it.”
-                  <span className="mt-1 block text-[0.7rem] tracking-[0.14em] text-muted uppercase">
-                    Elena Voss · Founder &amp; CEO
-                  </span>
+              <figcaption className="mt-5 border-t border-line pt-5">
+                <p className="max-w-xl text-sm leading-6 text-ink-2">
+                  System Integrators do not need more résumés. They need
+                  expertise that can sit inside a live programme and move it.
                 </p>
               </figcaption>
             </figure>

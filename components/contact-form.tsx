@@ -15,9 +15,9 @@ export function ContactForm() {
 
   if (state.ok) {
     return (
-      <div className="border border-white/20 px-8 py-12">
-        <p className="eyebrow text-white/70">Request received</p>
-        <p className="mt-4 text-2xl tracking-tight">
+      <div className="py-8">
+        <p className="eyebrow text-keaas">Request received</p>
+        <p className="mt-4 text-2xl tracking-tight text-ink">
           Thank you. A KEAAS partner will respond within one business day.
         </p>
       </div>
@@ -72,8 +72,8 @@ export function ContactForm() {
         autoComplete="tel"
       />
       <label className="block pt-4">
-        <span className="eyebrow text-white/80">What expertise do you need?</span>
-        <select name="expertise" required defaultValue="" className="form-field">
+        <span className="eyebrow text-muted">What expertise do you need?</span>
+        <select name="expertise" required defaultValue="" className="form-field-light">
           <option value="" disabled>
             Select a discipline
           </option>
@@ -86,18 +86,18 @@ export function ContactForm() {
         </select>
       </label>
       <label className="block pt-4">
-        <span className="eyebrow text-white/80">Message</span>
+        <span className="eyebrow text-muted">Message</span>
         <textarea
           name="message"
           rows={4}
           required
-          className="form-field resize-none"
+          className="form-field-light resize-none"
           placeholder="Programme context, timeline, locations"
         />
       </label>
 
       {state.error ? (
-        <p className="pt-3 text-sm text-white" role="alert">
+        <p className="pt-3 text-sm text-keaas" role="alert">
           {state.error}
         </p>
       ) : null}
@@ -105,7 +105,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={state.pending}
-        className="mt-8 inline-flex items-center border border-white bg-white px-6 py-3 text-[0.7rem] font-medium tracking-[0.18em] text-keaas uppercase transition-colors hover:bg-transparent hover:text-white disabled:opacity-60"
+        className="mt-8 inline-flex items-center border border-keaas bg-keaas px-6 py-3 text-[0.7rem] font-medium tracking-[0.18em] text-white uppercase transition-colors hover:bg-keaas-deep disabled:opacity-60"
       >
         {state.pending ? "Sending…" : "Submit request"}
       </button>
@@ -128,13 +128,13 @@ function Field({
 }) {
   return (
     <label className="block pt-4">
-      <span className="eyebrow text-white/80">{label}</span>
+      <span className="eyebrow text-muted">{label}</span>
       <input
         name={name}
         type={type}
         autoComplete={autoComplete}
         required={required}
-        className="form-field"
+        className="form-field-light"
       />
     </label>
   );

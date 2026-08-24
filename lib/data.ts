@@ -8,11 +8,11 @@ export const company = {
 };
 
 export const nav = [
-  { href: "/#about", label: "About" },
-  { href: "/#difference", label: "Why KEAAS" },
-  { href: "/#how-we-work", label: "Approach" },
-  { href: "/#experts", label: "Experts" },
-  { href: "/#insights", label: "Insights" },
+  { href: "/about", label: "About" },
+  { href: "/why-keaas", label: "Why KEAAS" },
+  { href: "/approach", label: "Approach" },
+  { href: "/experts", label: "Experts" },
+  { href: "/insights", label: "Insights" },
   { href: "/leadership", label: "Leadership" },
 ] as const;
 
@@ -121,59 +121,44 @@ export const outcomes = [
 
 export const experts = [
   {
-    slug: "ananya-mehta",
-    name: "Ananya Mehta",
+    slug: "erp-consultant",
     role: "ERP Consultant",
-    experience: "15+ years",
+    experience: "15+ years typical depth",
     specialization: "SAP S/4HANA, Finance, Controlling",
-    image: "/images/expert-ananya.jpg",
-    location: "Mumbai · CET / IST",
     summary:
-      "Leads finance transformation workstreams for multi-country S/4HANA programmes, with particular depth in controlling design and close acceleration.",
+      "Finance transformation workstreams for multi-country S/4HANA programmes, with depth in controlling design and close acceleration.",
   },
   {
-    slug: "kenji-nakamura",
-    name: "Kenji Nakamura",
+    slug: "technical-architect",
     role: "Technical Architect",
-    experience: "12+ years",
+    experience: "12+ years typical depth",
     specialization: "Solution Architecture, Integration, Cloud",
-    image: "/images/expert-kenji.jpg",
-    location: "Tokyo · JST / GMT",
     summary:
-      "Designs resilient target architectures for System Integrators delivering hybrid SAP and cloud landscapes across APAC and EMEA.",
+      "Target architectures for System Integrators delivering hybrid SAP and cloud landscapes.",
   },
   {
-    slug: "camille-dubois",
-    name: "Camille Dubois",
+    slug: "integration-specialist",
     role: "Integration Specialist",
-    experience: "10+ years",
+    experience: "10+ years typical depth",
     specialization: "SAP, APIs, Middleware",
-    image: "/images/expert-camille.jpg",
-    location: "Paris · CET",
     summary:
-      "Builds and governs integration layers across SAP BTP, middleware and partner APIs, with a bias for operable, documented interfaces.",
+      "Integration layers across SAP BTP, middleware and partner APIs, written for operators who inherit the landscape.",
   },
   {
-    slug: "thomas-wright",
-    name: "Thomas Wright",
+    slug: "data-analyst",
     role: "Data Analyst",
-    experience: "8+ years",
+    experience: "8+ years typical depth",
     specialization: "Analytics, Reporting, Visualization",
-    image: "/images/expert-thomas.jpg",
-    location: "London · GMT",
     summary:
-      "Turns programme data into decision-ready reporting for delivery leadership, from cutover dashboards to value-tracking packs.",
+      "Programme data turned into decision-ready reporting, from cutover dashboards to value-tracking packs.",
   },
   {
-    slug: "sofia-alvarez",
-    name: "Sofia Alvarez",
+    slug: "project-manager",
     role: "Project Manager",
-    experience: "12+ years",
+    experience: "12+ years typical depth",
     specialization: "Agile, Delivery, Stakeholder Management",
-    image: "/images/expert-sofia.jpg",
-    location: "Madrid · CET / EST",
     summary:
-      "Steers complex SI workstreams with disciplined governance, clear RAID discipline and calm stakeholder communication.",
+      "Complex SI workstreams with disciplined governance, RAID control and clear stakeholder communication.",
   },
 ] as const;
 
@@ -182,25 +167,22 @@ export const testimonials = [
     featured: true,
     quote:
       "KEAAS provided us the right SAP FICO expertise at the right time. Their flexibility and quality of talent are unmatched.",
-    name: "Director of Finance Transformation",
-    role: "Global System Integrator, EMEA",
-    company: "Meridian Systems",
+    role: "Director of Finance Transformation",
+    company: "Global System Integrator, EMEA",
   },
   {
     featured: false,
     quote:
       "We needed a technical architect within ten days. KEAAS matched, onboarded and had the expert contributing in the second week.",
-    name: "Programme Director",
-    role: "Delivery Leadership, APAC",
-    company: "Northline Digital",
+    role: "Programme Director",
+    company: "Delivery Leadership, APAC",
   },
   {
     featured: false,
     quote:
       "The reliability is what we keep coming back for. The experts work as part of our team, not as visitors on the edge of it.",
-    name: "Partner, Enterprise Applications",
-    role: "Practice Lead, Americas",
-    company: "Aether Integration",
+    role: "Partner, Enterprise Applications",
+    company: "Practice Lead, Americas",
   },
 ] as const;
 
@@ -248,53 +230,10 @@ export const insights = [
       "Geography still matters. Time zones, language and regulatory context decide whether expertise lands — or merely arrives.",
     body: [
       "Global talent is not the same as interchangeable talent. A controlling specialist in Mumbai can be exactly right for a Frankfurt close — if the time-zone overlap, the language of the steering pack and the local statutory context have been designed for.",
-      "Experts-as-a-Service works when the matching logic is geographic as well as technical. KEAAS aligns specialists to the SI’s delivery theatre: EMEA programmes with CET coverage, APAC cutovers with JST and IST overlap, Americas workstreams that do not ask European experts to work a second night shift.",
+      "Experts-as-a-Service works when the matching logic is geographic as well as technical. KEAAS aligns specialists to the SI’s delivery theatre across India, the United Arab Emirates and the United Kingdom.",
       "The commercial effect is quiet and material. Programmes stop paying for the wrong seniority in the wrong city. Clients stop feeling the seam between the SI team and the specialist who joined in week six.",
       "Local impact is the point. Global reach is only the method.",
     ],
-  },
-] as const;
-
-export const leaders = [
-  {
-    slug: "elena-voss",
-    name: "Elena Voss",
-    role: "Founder & CEO",
-    image: "/images/lead-elena.jpg",
-    statement:
-      "System Integrators do not need more résumés. They need experts who can sit inside a live programme and move it.",
-  },
-  {
-    slug: "marcus-chen",
-    name: "Marcus Chen",
-    role: "Chief Operating Officer",
-    image: "/images/lead-marcus.jpg",
-    statement:
-      "Reliability is an operating system: screening, matching, onboarding and feedback, repeated without theatre.",
-  },
-  {
-    slug: "amara-okonkwo",
-    name: "Amara Okonkwo",
-    role: "Chief Technology Officer",
-    image: "/images/lead-amara.jpg",
-    statement:
-      "The platforms change. The requirement does not: precise technical judgement, delivered into someone else’s landscape.",
-  },
-  {
-    slug: "henrik-lindqvist",
-    name: "Henrik Lindqvist",
-    role: "Head of Delivery",
-    image: "/images/lead-henrik.jpg",
-    statement:
-      "We measure ourselves the way our partners do — by workstream movement, not by seats filled.",
-  },
-  {
-    slug: "priya-ramanathan",
-    name: "Priya Ramanathan",
-    role: "Head of People",
-    image: "/images/lead-priya.jpg",
-    statement:
-      "Culture is a filter. We choose professionals who can join a room and raise its standard.",
   },
 ] as const;
 
@@ -336,17 +275,17 @@ export const services = [
 export const careers = [
   {
     title: "Senior ERP Consultant — Finance",
-    location: "Remote · EMEA / IST",
+    location: "Remote · India / UAE / UK",
     type: "Expert network",
   },
   {
     title: "Integration Architect",
-    location: "Remote · EMEA / APAC",
+    location: "Remote · India / UAE / UK",
     type: "Expert network",
   },
   {
     title: "Partner Development Manager",
-    location: "London or Frankfurt",
+    location: "Mumbai or Dubai",
     type: "Full-time",
   },
 ] as const;
@@ -366,7 +305,7 @@ export const caseStudies = [
   },
   {
     slug: "architecture-americas",
-    client: "National SI · Americas",
+    client: "National SI · India",
     title: "Target architecture for a hybrid cloud programme",
     result: "Board-ready landscape decision in twenty-two days.",
   },

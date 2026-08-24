@@ -57,34 +57,11 @@ export function Partners() {
             <div className="relative aspect-[4/3] overflow-hidden">
               <Image
                 src="/images/collaboration.jpg"
-                alt="Senior delivery partners confirming a KEAAS engagement"
+                alt="Delivery partners confirming a KEAAS engagement"
                 fill
                 className="object-cover"
                 sizes="(min-width: 1024px) 45vw, 100vw"
               />
-              <svg
-                viewBox="0 0 100 75"
-                className="pointer-events-none absolute inset-0 h-full w-full"
-                aria-hidden="true"
-              >
-                <path
-                  d="M8 62 Q 28 20 52 38 T 94 18"
-                  fill="none"
-                  stroke="#b40000"
-                  strokeWidth="0.35"
-                  opacity="0.7"
-                />
-                <path
-                  d="M12 20 Q 40 48 70 30 T 96 52"
-                  fill="none"
-                  stroke="#ffffff"
-                  strokeWidth="0.25"
-                  opacity="0.35"
-                />
-                <circle cx="52" cy="38" r="1.2" fill="#b40000" />
-                <circle cx="28" cy="28" r="0.8" fill="#ffffff" />
-                <circle cx="70" cy="30" r="0.8" fill="#b40000" />
-              </svg>
             </div>
           </Reveal>
         </div>

@@ -8,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/about",
     "/why-keaas",
+    "/approach",
     "/experts",
     "/insights",
     "/leadership",

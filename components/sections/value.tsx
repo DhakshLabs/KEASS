@@ -2,23 +2,23 @@ import { Container, Reveal } from "@/components/ui";
 import { propositions } from "@/lib/data";
 
 const marks = [
-  <svg key="agile" viewBox="0 0 32 32" className="h-6 w-6" aria-hidden="true">
-    <path d="M6 16h20M21 10l5 6-5 6" fill="none" stroke="currentColor" strokeWidth="1" />
+  <svg key="agile" viewBox="0 0 48 48" className="h-12 w-12" aria-hidden="true">
+    <path d="M8 24h32M32 14l10 10-10 10" fill="none" stroke="currentColor" strokeWidth="2.2" />
   </svg>,
-  <svg key="int" viewBox="0 0 32 32" className="h-6 w-6" aria-hidden="true">
-    <circle cx="10" cy="16" r="3.2" fill="none" stroke="currentColor" strokeWidth="1" />
-    <circle cx="22" cy="16" r="3.2" fill="none" stroke="currentColor" strokeWidth="1" />
-    <path d="M13.2 16h5.6" fill="none" stroke="currentColor" strokeWidth="1" />
+  <svg key="int" viewBox="0 0 48 48" className="h-12 w-12" aria-hidden="true">
+    <circle cx="15" cy="24" r="6" fill="none" stroke="currentColor" strokeWidth="2.2" />
+    <circle cx="33" cy="24" r="6" fill="none" stroke="currentColor" strokeWidth="2.2" />
+    <path d="M21 24h6" fill="none" stroke="currentColor" strokeWidth="2.2" />
   </svg>,
-  <svg key="glob" viewBox="0 0 32 32" className="h-6 w-6" aria-hidden="true">
-    <circle cx="16" cy="16" r="8" fill="none" stroke="currentColor" strokeWidth="1" />
-    <path d="M8 16h16M16 8c3 3 3 13 0 16M16 8c-3 3-3 13 0 16" fill="none" stroke="currentColor" strokeWidth="1" />
+  <svg key="glob" viewBox="0 0 48 48" className="h-12 w-12" aria-hidden="true">
+    <circle cx="24" cy="24" r="13" fill="none" stroke="currentColor" strokeWidth="2.2" />
+    <path d="M11 24h26M24 11c5 5 5 21 0 26M24 11c-5 5-5 21 0 26" fill="none" stroke="currentColor" strokeWidth="2.2" />
   </svg>,
-  <svg key="trust" viewBox="0 0 32 32" className="h-6 w-6" aria-hidden="true">
-    <path d="M16 6 26 10v7c0 6.2-4.4 9.6-10 11-5.6-1.4-10-4.8-10-11v-7L16 6Z" fill="none" stroke="currentColor" strokeWidth="1" />
+  <svg key="trust" viewBox="0 0 48 48" className="h-12 w-12" aria-hidden="true">
+    <path d="M24 8 40 14v11c0 10-7 16-16 18-9-2-16-8-16-18V14L24 8Z" fill="none" stroke="currentColor" strokeWidth="2.2" />
   </svg>,
-  <svg key="res" viewBox="0 0 32 32" className="h-6 w-6" aria-hidden="true">
-    <path d="M7 22 13 14l5 5 7-11" fill="none" stroke="currentColor" strokeWidth="1" />
+  <svg key="res" viewBox="0 0 48 48" className="h-12 w-12" aria-hidden="true">
+    <path d="M10 34 20 20l8 8 10-18" fill="none" stroke="currentColor" strokeWidth="2.2" />
   </svg>,
 ];
 
@@ -46,13 +46,13 @@ export function Value() {
               delay={i * 0.06}
               className="border-white/20 py-8 md:border-l md:px-6 md:py-2 md:first:border-l-0 lg:px-8"
             >
-              <div className="flex items-start justify-between">
+              <div className="flex flex-col gap-6">
+                <span className="text-white">{marks[i]}</span>
                 <span className="text-[0.68rem] tracking-[0.2em] text-white/55">
                   {item.id}
                 </span>
-                <span className="text-white/80">{marks[i]}</span>
               </div>
-              <h3 className="mt-8 text-sm font-medium tracking-[0.18em] uppercase">
+              <h3 className="mt-6 text-sm font-medium tracking-[0.18em] uppercase">
                 {item.title}
               </h3>
               <p className="mt-4 max-w-[16rem] text-sm leading-6 text-white/75">

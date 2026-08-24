@@ -151,7 +151,7 @@ body {
 }
 
 .animate-node-pulse {
-  animation: node-pulse 3.8s ease-in-out infinite;
+  animation: node-pulse 6.5s ease-in-out infinite;
   transform-origin: center;
 }
 
@@ -208,6 +208,27 @@ body {
 
 .form-field option {
   color: #111;
+}
+
+.form-field-light {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid #d2d2d2;
+  background: transparent;
+  color: #111111;
+  padding: 0.85rem 0 0.7rem;
+  font-size: 0.95rem;
+  border-radius: 0;
+  transition: border-color 0.25s ease;
+}
+
+.form-field-light::placeholder {
+  color: #888888;
+}
+
+.form-field-light:focus {
+  outline: none;
+  border-bottom-color: #b40000;
 }
 
 @media (prefers-reduced-motion: reduce) {
