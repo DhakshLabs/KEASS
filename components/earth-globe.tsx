@@ -43,10 +43,17 @@ function arcCurve(from: THREE.Vector3, to: THREE.Vector3) {
 function Earth({ spinning }: { spinning: boolean }) {
   const group = useRef<THREE.Group>(null);
   const spinY = useRef(2.4);
-  const map = useTexture(publicUrl("/images/earth-dark.jpg"), (tex) => {
-    tex.colorSpace = THREE.SRGBColorSpace;
+  const topo = useTexture(publicUrl("/images/earth-bump.png"), (tex) => {
+    tex.colorSpace = THREE.NoColorSpace;
     tex.anisotropy = 8;
   });
+  const uniforms = useMemo(
+    () => ({
+      uTopo: { value: topo },
+      uLight: { value: new THREE.Vector3(0.55, 0.35, 1.0).normalize() },
+    }),
+    [topo],
+  );
 
   useFrame((_, delta) => {
     if (!group.current) return;
@@ -58,11 +65,35 @@ function Earth({ spinning }: { spinning: boolean }) {
     <group ref={group}>
       <mesh>
         <sphereGeometry args={[RADIUS, 64, 64]} />
-        <meshStandardMaterial
-          map={map}
-          roughness={0.55}
-          metalness={0.12}
-          color="#d8d8d8"
+        <shaderMaterial
+          uniforms={uniforms}
+          vertexShader={`
+            varying vec2 vUv;
+            varying vec3 vNormal;
+            void main() {
+              vUv = uv;
+              vNormal = normalize(normalMatrix * normal);
+              gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+            }
+          `}
+          fragmentShader={`
+            uniform sampler2D uTopo;
+            uniform vec3 uLight;
+            varying vec2 vUv;
+            varying vec3 vNormal;
+            void main() {
+              float h = texture2D(uTopo, vUv).r;
+              float land = smoothstep(0.27, 0.52, h);
+              vec3 ocean = vec3(0.18, 0.21, 0.25);
+              vec3 ground = vec3(0.62, 0.64, 0.67);
+              vec3 col = mix(ocean, ground, land);
+              float diff = clamp(dot(normalize(vNormal), uLight), 0.0, 1.0);
+              float rim = pow(1.0 - max(dot(normalize(vNormal), vec3(0.0, 0.0, 1.0)), 0.0), 2.4);
+              col *= 0.38 + 0.72 * diff;
+              col += vec3(0.55, 0.12, 0.10) * rim * 0.18;
+              gl_FragColor = vec4(col, 1.0);
+            }
+          `}
         />
       </mesh>
       <mesh scale={1.09}>
