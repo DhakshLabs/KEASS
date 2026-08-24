@@ -12,9 +12,11 @@ export function Logo({ invert = false, href = "/", compact = false }: LogoProps)
     <Image
       src="/logo.png"
       alt="KEAAS Global"
-      width={compact ? 56 : 68}
-      height={compact ? 67 : 82}
-      className={`h-auto w-[56px] object-contain sm:w-[68px] ${invert ? "brightness-0 invert" : ""}`}
+      width={compact ? 72 : 92}
+      height={compact ? 86 : 110}
+      className={`h-auto object-contain ${
+        compact ? "w-[64px] sm:w-[72px]" : "w-[76px] sm:w-[92px]"
+      } ${invert ? "brightness-0 invert" : ""}`}
       priority
     />
   );

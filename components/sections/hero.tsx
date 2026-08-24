@@ -24,8 +24,8 @@ export function Hero() {
             worldwide.
           </p>
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-            <Button href="/#how-we-work">How KEAAS works</Button>
-            <Button href="/#contact" variant="secondary">
+            <Button href="/approach">How KEAAS works</Button>
+            <Button href="/contact" variant="secondary">
               Talk to us
             </Button>
           </div>

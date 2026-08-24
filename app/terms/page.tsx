@@ -21,7 +21,7 @@ export default function TermsPage() {
           services agreement with the relevant System Integrator.
         </p>
         <p>
-          All trademarks, portraits and written materials on this site are
+          All trademarks, photographs and written materials on this site are
           owned by KEAAS or used with permission. They may not be reproduced
           for commercial use without written consent.
         </p>

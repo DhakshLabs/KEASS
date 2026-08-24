@@ -6,7 +6,7 @@ export function Contact() {
     <section
       id="contact"
       aria-labelledby="contact-heading"
-      className="border-t border-line bg-mist"
+      className="border-t border-line bg-paper"
     >
       <Container className="grid gap-14 py-24 lg:grid-cols-12 lg:py-32">
         <div className="lg:col-span-5">
@@ -23,7 +23,7 @@ export function Contact() {
           </p>
         </div>
         <div className="lg:col-span-6 lg:col-start-7">
-          <div className="border border-line bg-paper px-6 py-8 sm:px-8">
+          <div className="border border-line bg-white px-6 py-8 shadow-[0_1px_0_#e6e6e6] sm:px-10 sm:py-10">
             <ContactForm />
           </div>
         </div>

@@ -15,8 +15,8 @@ export default function LeadershipPage() {
       <Container className="max-w-3xl space-y-6 py-16 text-base leading-8 text-muted">
         <p>
           The company is built on decades of collective experience in
-          technology, consulting and enterprise delivery. We do not publish
-          individual profiles here. The work is judged by how programmes move.
+          technology, consulting and enterprise delivery. The work is judged by
+          how programmes move — not by personalities on a page.
         </p>
         <p>
           Screening, matching, onboarding and feedback are treated as an

@@ -7,11 +7,17 @@ import { Menu, X } from "lucide-react";
 import { Logo } from "@/components/logo";
 import { nav } from "@/lib/data";
 
+function isActive(pathname: string, href: string) {
+  const current = pathname.replace(/\/+$/, "") || "/";
+  const target = href.replace(/\/+$/, "") || "/";
+  return current === target || current.startsWith(`${target}/`);
+}
+
 export function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const home = pathname === "/";
+  const home = (pathname.replace(/\/+$/, "") || "/") === "/";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -35,7 +41,7 @@ export function Header() {
         solid ? "bg-paper/95 shadow-[0_1px_0_#e6e6e6] backdrop-blur-md" : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex h-[84px] max-w-[1440px] items-center justify-between px-6 sm:px-8 lg:px-14">
+      <div className="mx-auto flex h-[96px] max-w-[1440px] items-center justify-between px-6 sm:px-8 lg:px-14">
         <Logo />
 
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">
@@ -43,7 +49,9 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-[0.7rem] font-medium tracking-[0.16em] uppercase text-ink-2 transition-colors hover:text-keaas"
+              className={`text-[0.7rem] font-medium tracking-[0.16em] uppercase transition-colors hover:text-keaas ${
+                isActive(pathname, item.href) ? "text-keaas" : "text-ink-2"
+              }`}
             >
               {item.label}
             </Link>
@@ -80,7 +88,9 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="border-b border-line py-4 text-sm tracking-[0.14em] uppercase"
+              className={`border-b border-line py-4 text-sm tracking-[0.14em] uppercase ${
+                isActive(pathname, item.href) ? "text-keaas" : "text-ink"
+              }`}
               onClick={() => setOpen(false)}
             >
               {item.label}

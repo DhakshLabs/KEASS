@@ -8,8 +8,8 @@ const columns = [
     links: [
       { href: "/about", label: "About KEAAS" },
       { href: "/why-keaas", label: "Why KEAAS" },
+      { href: "/approach", label: "Approach" },
       { href: "/leadership", label: "Leadership" },
-      { href: "/careers", label: "Careers" },
     ],
   },
   {

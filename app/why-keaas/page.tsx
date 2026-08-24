@@ -10,8 +10,8 @@ export default function WhyPage() {
   return (
     <>
       <PageIntro eyebrow="Why KEAAS" title="More than resources. A true extension.">
-        Five disciplines that separate an expert partner from a supplier of
-        names.
+        Five disciplines that separate an expert partner from a capacity
+        supplier.
       </PageIntro>
       <Container className="py-20">
         <ol className="divide-y divide-line border-y border-line">
