@@ -59,7 +59,7 @@ function Earth({ spinning }: { spinning: boolean }) {
 
   useFrame((_, delta) => {
     if (!group.current) return;
-    if (spinning) spinY.current += delta * 0.045;
+    if (spinning) spinY.current += delta * 0.07;
     group.current.rotation.set(0.28, spinY.current, 0.05);
   });
 
@@ -161,6 +161,7 @@ function DeliveryArc({
 }) {
   const comet = useRef<THREE.Mesh>(null);
   const glow = useRef<THREE.Mesh>(null);
+  const tail = useRef<THREE.Group>(null);
   const curve = useMemo(
     () =>
       arcCurve(
@@ -178,15 +179,21 @@ function DeliveryArc({
 
   useFrame(({ clock }) => {
     if (!animate || !comet.current || !glow.current) return;
-    const cycle = 4.8;
+    const cycle = 3.6;
     const t = ((clock.elapsedTime + delay) % cycle) / cycle;
     const eased = t * t * (3 - 2 * t);
     const p = curve.getPointAt(eased);
     comet.current.position.copy(p);
     glow.current.position.copy(p);
     const fade = Math.sin(t * Math.PI);
-    (comet.current.material as THREE.MeshBasicMaterial).opacity = 0.35 + fade * 0.65;
-    (glow.current.material as THREE.MeshBasicMaterial).opacity = 0.08 + fade * 0.28;
+    (comet.current.material as THREE.MeshBasicMaterial).opacity = 0.45 + fade * 0.55;
+    (glow.current.material as THREE.MeshBasicMaterial).opacity = 0.12 + fade * 0.32;
+    tail.current?.children.forEach((child, i) => {
+      const behind = Math.max(0, eased - (i + 1) * 0.028);
+      child.position.copy(curve.getPointAt(behind));
+      const mat = (child as THREE.Mesh).material as THREE.MeshBasicMaterial;
+      mat.opacity = fade * (0.42 - i * 0.07);
+    });
   });
 
   return (
@@ -222,6 +229,21 @@ function DeliveryArc({
           toneMapped={false}
         />
       </mesh>
+      <group ref={tail}>
+        {Array.from({ length: 5 }).map((_, i) => (
+          <mesh key={i}>
+            <sphereGeometry args={[0.015 - i * 0.0016, 12, 12]} />
+            <meshBasicMaterial
+              color="#ff8a8a"
+              transparent
+              opacity={0.3}
+              blending={THREE.AdditiveBlending}
+              depthWrite={false}
+              toneMapped={false}
+            />
+          </mesh>
+        ))}
+      </group>
       <mesh ref={comet}>
         <sphereGeometry args={[0.022, 16, 16]} />
         <meshBasicMaterial color="#ffe7e7" toneMapped={false} />

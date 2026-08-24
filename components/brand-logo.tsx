@@ -46,30 +46,30 @@ export function BrandLogo({
       <circle cx="92" cy="84" r="3.4" fill="#B40000" />
       <text
         x="90"
-        y="152"
+        y="154"
         textAnchor="middle"
         fill={keaas}
         fontFamily="Inter, Arial, Helvetica, sans-serif"
-        fontSize="26"
+        fontSize="28"
         fontWeight="700"
-        letterSpacing="6"
+        letterSpacing="5.5"
       >
         KEAAS
       </text>
-      <line x1="28" y1="176" x2="52" y2="176" stroke="#B40000" strokeWidth="2" />
+      <line x1="22" y1="178" x2="48" y2="178" stroke="#B40000" strokeWidth="2.2" />
       <text
         x="90"
-        y="181"
+        y="184"
         textAnchor="middle"
         fill="#B40000"
         fontFamily="Inter, Arial, Helvetica, sans-serif"
-        fontSize="13"
-        fontWeight="500"
-        letterSpacing="8"
+        fontSize="16"
+        fontWeight="600"
+        letterSpacing="7.5"
       >
         GLOBAL
       </text>
-      <line x1="128" y1="176" x2="152" y2="176" stroke="#B40000" strokeWidth="2" />
+      <line x1="132" y1="178" x2="158" y2="178" stroke="#B40000" strokeWidth="2.2" />
     </svg>
   );
 }
