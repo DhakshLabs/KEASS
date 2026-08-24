@@ -1,23 +1,18 @@
-import Image from "next/image";
 import Link from "next/link";
+import { BrandLogo } from "@/components/brand-logo";
 
 type LogoProps = {
-  invert?: boolean;
+  variant?: "dark" | "light";
   href?: string;
   compact?: boolean;
 };
 
-export function Logo({ invert = false, href = "/", compact = false }: LogoProps) {
+export function Logo({ variant = "light", href = "/", compact = false }: LogoProps) {
   const content = (
-    <Image
-      src="/logo.png"
-      alt="KEAAS Global"
-      width={compact ? 72 : 92}
-      height={compact ? 86 : 110}
-      className={`h-auto object-contain ${
-        compact ? "w-[64px] sm:w-[72px]" : "w-[76px] sm:w-[92px]"
-      } ${invert ? "brightness-0 invert" : ""}`}
-      priority
+    <BrandLogo
+      variant={variant}
+      compact={compact}
+      className={`h-auto ${compact ? "w-[64px] sm:w-[72px]" : "w-[76px] sm:w-[92px]"}`}
     />
   );
 

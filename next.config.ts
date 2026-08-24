@@ -10,6 +10,10 @@ const nextConfig: NextConfig = {
   },
   basePath: githubPages ? "/KEASS" : "",
   assetPrefix: githubPages ? "/KEASS" : "",
+  env: {
+    NEXT_PUBLIC_BASE_PATH: githubPages ? "/KEASS" : "",
+  },
+  transpilePackages: ["three", "@react-three/fiber", "@react-three/drei"],
 };
 
 export default nextConfig;
