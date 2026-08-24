@@ -20,9 +20,17 @@ npm install
 npm run dev
 ```
 
-## Production
+## Production build
+
+The site is a static export (`output: "export"`).
 
 ```bash
 npm run build
-npm start
+npx serve out
 ```
+
+## Deploy
+
+- **Netlify:** `npx netlify deploy --dir=out --no-build --prod`
+- **Vercel:** `npx vercel --prod`
+- **GitHub Pages:** push to `main` (or this feature branch) after Pages is set to GitHub Actions. The workflow sets `GITHUB_PAGES=true` so assets use the `/KEASS` base path.

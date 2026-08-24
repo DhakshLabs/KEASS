@@ -1,11 +1,14 @@
 import type { MetadataRoute } from "next";
 import { insights, services } from "@/lib/data";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
     "",
     "/about",
     "/why-keaas",
+    "/approach",
     "/experts",
     "/insights",
     "/leadership",

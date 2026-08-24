@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { Button, Container, PageIntro, Reveal } from "@/components/ui";
 import { experts } from "@/lib/data";
 
@@ -11,37 +10,34 @@ export default function ExpertsPage() {
   return (
     <>
       <PageIntro eyebrow="Our Experts" title="Experienced. Verified. Reliable.">
-        A sample of the functional and technical bench System Integrators draw
-        from. Every expert is screened for skill, enterprise exposure and
-        cultural fit.
+        Functional and technical disciplines System Integrators draw from.
+        Every expert is screened for skill, enterprise exposure and cultural
+        fit.
       </PageIntro>
-      <Container className="grid gap-x-10 gap-y-16 py-20 md:grid-cols-2 lg:grid-cols-3">
-        {experts.map((expert, i) => (
-          <Reveal key={expert.slug} delay={i * 0.05}>
-            <article>
-              <div className="relative aspect-[3/4] overflow-hidden bg-mist">
-                <Image
-                  src={expert.image}
-                  alt={`${expert.name}, ${expert.role}`}
-                  fill
-                  className="object-cover"
-                  sizes="(min-width: 1024px) 30vw, 50vw"
-                />
-              </div>
-              <p className="mt-5 text-[0.68rem] tracking-[0.16em] text-keaas uppercase">
-                {expert.role} · {expert.experience}
-              </p>
-              <h2 className="mt-2 text-2xl tracking-tight text-ink">
-                {expert.name}
-              </h2>
-              <p className="mt-2 text-sm text-muted">{expert.specialization}</p>
-              <p className="mt-4 text-sm leading-6 text-muted">{expert.summary}</p>
-              <p className="mt-3 text-xs tracking-[0.12em] text-muted uppercase">
-                {expert.location}
-              </p>
-            </article>
-          </Reveal>
-        ))}
+      <Container className="py-20">
+        <ol className="divide-y divide-line border-y border-line">
+          {experts.map((expert, i) => (
+            <Reveal key={expert.slug} delay={i * 0.04}>
+              <li className="grid gap-4 py-10 md:grid-cols-12">
+                <p className="text-sm tracking-[0.18em] text-keaas md:col-span-2">
+                  0{i + 1}
+                </p>
+                <div className="md:col-span-4">
+                  <h2 className="text-2xl tracking-tight text-ink">{expert.role}</h2>
+                  <p className="mt-2 text-sm text-muted">{expert.experience}</p>
+                </div>
+                <div className="md:col-span-6">
+                  <p className="text-sm tracking-[0.08em] text-ink-2 uppercase">
+                    {expert.specialization}
+                  </p>
+                  <p className="mt-3 text-base leading-7 text-muted">
+                    {expert.summary}
+                  </p>
+                </div>
+              </li>
+            </Reveal>
+          ))}
+        </ol>
       </Container>
       <Container className="pb-24">
         <Button href="/contact">Request an expert</Button>

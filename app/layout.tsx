@@ -24,6 +24,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_GB",
     siteName: "KEAAS",
+    images: [{ url: "/logo.png", alt: "KEAAS Global" }],
   },
 };
 

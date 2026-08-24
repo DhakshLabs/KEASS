@@ -1,26 +1,56 @@
 "use client";
 
-import { useActionState } from "react";
-import { submitRequest, type ContactState } from "@/app/actions";
+import { useState, type FormEvent } from "react";
 
-const initial: ContactState = { ok: false, error: "" };
+type ContactState = {
+  ok: boolean;
+  error: string;
+  pending: boolean;
+};
+
+const initial: ContactState = { ok: false, error: "", pending: false };
 
 export function ContactForm() {
-  const [state, action, pending] = useActionState(submitRequest, initial);
+  const [state, setState] = useState<ContactState>(initial);
 
   if (state.ok) {
     return (
-      <div className="border border-white/20 px-8 py-12">
-        <p className="eyebrow text-white/70">Request received</p>
-        <p className="mt-4 text-2xl tracking-tight">
+      <div className="py-8">
+        <p className="eyebrow text-keaas">Request received</p>
+        <p className="mt-4 text-2xl tracking-tight text-ink">
           Thank you. A KEAAS partner will respond within one business day.
         </p>
       </div>
     );
   }
 
+  function onSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const name = String(data.get("name") ?? "").trim();
+    const email = String(data.get("email") ?? "").trim();
+    const company = String(data.get("company") ?? "").trim();
+    const expertise = String(data.get("expertise") ?? "").trim();
+    const message = String(data.get("message") ?? "").trim();
+
+    if (!name || !email || !company || !expertise || !message) {
+      setState({ ok: false, error: "Please complete the required fields.", pending: false });
+      return;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setState({ ok: false, error: "Please enter a valid work email.", pending: false });
+      return;
+    }
+
+    setState({ ok: false, error: "", pending: true });
+    window.setTimeout(() => {
+      setState({ ok: true, error: "", pending: false });
+    }, 400);
+  }
+
   return (
-    <form action={action} className="space-y-2" noValidate>
+    <form onSubmit={onSubmit} className="space-y-2" noValidate>
       <Field label="Full Name" name="name" autoComplete="name" required />
       <Field
         label="Work Email"
@@ -42,8 +72,8 @@ export function ContactForm() {
         autoComplete="tel"
       />
       <label className="block pt-4">
-        <span className="eyebrow text-white/80">What expertise do you need?</span>
-        <select name="expertise" required defaultValue="" className="form-field">
+        <span className="eyebrow text-muted">What expertise do you need?</span>
+        <select name="expertise" required defaultValue="" className="form-field-light">
           <option value="" disabled>
             Select a discipline
           </option>
@@ -56,28 +86,28 @@ export function ContactForm() {
         </select>
       </label>
       <label className="block pt-4">
-        <span className="eyebrow text-white/80">Message</span>
+        <span className="eyebrow text-muted">Message</span>
         <textarea
           name="message"
           rows={4}
           required
-          className="form-field resize-none"
+          className="form-field-light resize-none"
           placeholder="Programme context, timeline, locations"
         />
       </label>
 
       {state.error ? (
-        <p className="pt-3 text-sm text-white" role="alert">
+        <p className="pt-3 text-sm text-keaas" role="alert">
           {state.error}
         </p>
       ) : null}
 
       <button
         type="submit"
-        disabled={pending}
-        className="mt-8 inline-flex items-center border border-white bg-white px-6 py-3 text-[0.7rem] font-medium tracking-[0.18em] text-keaas uppercase transition-colors hover:bg-transparent hover:text-white disabled:opacity-60"
+        disabled={state.pending}
+        className="mt-8 inline-flex items-center border border-keaas bg-keaas px-6 py-3 text-[0.7rem] font-medium tracking-[0.18em] text-white uppercase transition-colors hover:bg-keaas-deep disabled:opacity-60"
       >
-        {pending ? "Sending…" : "Submit request"}
+        {state.pending ? "Sending…" : "Submit request"}
       </button>
     </form>
   );
@@ -98,13 +128,13 @@ function Field({
 }) {
   return (
     <label className="block pt-4">
-      <span className="eyebrow text-white/80">{label}</span>
+      <span className="eyebrow text-muted">{label}</span>
       <input
         name={name}
         type={type}
         autoComplete={autoComplete}
         required={required}
-        className="form-field"
+        className="form-field-light"
       />
     </label>
   );
