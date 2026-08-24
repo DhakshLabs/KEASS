@@ -281,11 +281,14 @@ export function EarthGlobe() {
     <div className="relative h-full min-h-[420px] w-full">
       <Canvas
         camera={{ position: [0, 0.15, 5.15], fov: 32 }}
-        dpr={[1, 1.75]}
+        dpr={[1, 1.5]}
         gl={{ antialias: true, alpha: false, powerPreference: "high-performance" }}
+        resize={{ debounce: 80 }}
         onCreated={({ gl }) => {
           gl.toneMapping = THREE.ACESFilmicToneMapping;
           gl.toneMappingExposure = 1.12;
+          const lose = (event: Event) => event.preventDefault();
+          gl.domElement.addEventListener("webglcontextlost", lose, false);
         }}
         aria-label="KEAAS delivery across India, the United Arab Emirates and the United Kingdom"
       >
