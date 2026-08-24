@@ -1,24 +1,26 @@
+"use client";
+
+import Image from "next/image";
 import Link from "next/link";
-import { BrandLogo } from "@/components/brand-logo";
 
 type LogoProps = {
-  variant?: "dark" | "light";
   href?: string;
   compact?: boolean;
 };
 
-export function Logo({ variant = "light", href = "/", compact = false }: LogoProps) {
+export function Logo({ href = "/", compact = false }: LogoProps) {
   const content = (
-    <BrandLogo
-      variant={variant}
-      compact={compact}
-      className={`h-auto ${compact ? "w-[64px] sm:w-[72px]" : "w-[76px] sm:w-[92px]"}`}
+    <Image
+      src="/logo.png"
+      alt="KEAAS Global"
+      width={compact ? 72 : 88}
+      height={compact ? 72 : 88}
+      className={`h-auto object-contain ${compact ? "w-[56px] sm:w-[64px]" : "w-[68px] sm:w-[80px]"}`}
+      priority
     />
   );
 
-  if (!href) {
-    return content;
-  }
+  if (!href) return content;
 
   return (
     <Link href={href} aria-label="KEAAS Global home" className="inline-flex items-center">

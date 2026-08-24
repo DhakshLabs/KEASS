@@ -1,25 +1,23 @@
 "use client";
 
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, Stars, useTexture } from "@react-three/drei";
+import { useTexture } from "@react-three/drei";
 import { Suspense, useMemo, useRef } from "react";
 import { useReducedMotion } from "framer-motion";
 import * as THREE from "three";
 
-const RADIUS = 1.72;
+const RADIUS = 1.58;
 
 const cities = {
-  london: { lat: 51.51, lon: -0.13, label: "United Kingdom" },
-  dubai: { lat: 25.2, lon: 55.27, label: "United Arab Emirates" },
-  mumbai: { lat: 19.08, lon: 72.88, label: "India" },
+  london: { lat: 51.51, lon: -0.13 },
+  dubai: { lat: 25.2, lon: 55.27 },
+  mumbai: { lat: 19.08, lon: 72.88 },
 } as const;
 
 const routes: [keyof typeof cities, keyof typeof cities, number][] = [
   ["london", "dubai", 0],
-  ["dubai", "mumbai", 0.9],
-  ["mumbai", "london", 1.8],
-  ["london", "mumbai", 2.7],
-  ["dubai", "london", 3.6],
+  ["dubai", "mumbai", 1.4],
+  ["london", "mumbai", 2.8],
 ];
 
 function publicUrl(path: string) {
@@ -38,63 +36,41 @@ function latLonToVec3(lat: number, lon: number, radius: number) {
 
 function arcCurve(from: THREE.Vector3, to: THREE.Vector3) {
   const mid = from.clone().add(to).multiplyScalar(0.5);
-  const lift = from.distanceTo(to) * 0.42;
-  mid.normalize().multiplyScalar(RADIUS + lift);
+  mid.normalize().multiplyScalar(RADIUS + from.distanceTo(to) * 0.38);
   return new THREE.QuadraticBezierCurve3(from, mid, to);
 }
 
 function Earth({ spinning }: { spinning: boolean }) {
   const group = useRef<THREE.Group>(null);
-  const spinY = useRef(2.35);
-  const [night, bump] = useTexture(
-    [publicUrl("/images/earth-night.jpg"), publicUrl("/images/earth-bump.png")],
-    (loaded) => {
-      const maps = (Array.isArray(loaded) ? loaded : [loaded]) as THREE.Texture[];
-      maps[0].colorSpace = THREE.SRGBColorSpace;
-      maps[0].anisotropy = 8;
-      maps[1].anisotropy = 4;
-      maps[1].colorSpace = THREE.NoColorSpace;
-    },
-  );
+  const spinY = useRef(2.4);
+  const map = useTexture(publicUrl("/images/earth-dark.jpg"), (tex) => {
+    tex.colorSpace = THREE.SRGBColorSpace;
+    tex.anisotropy = 8;
+  });
 
   useFrame((_, delta) => {
     if (!group.current) return;
-    if (spinning) spinY.current += delta * 0.07;
-    group.current.rotation.set(0.28, spinY.current, 0.05);
+    if (spinning) spinY.current += delta * 0.055;
+    group.current.rotation.set(0.32, spinY.current, 0.04);
   });
 
   return (
     <group ref={group}>
-      <mesh castShadow>
-        <sphereGeometry args={[RADIUS, 96, 96]} />
+      <mesh>
+        <sphereGeometry args={[RADIUS, 64, 64]} />
         <meshStandardMaterial
-          map={night}
-          bumpMap={bump}
-          bumpScale={0.045}
-          roughness={0.78}
-          metalness={0.08}
-          emissive="#ffffff"
-          emissiveMap={night}
-          emissiveIntensity={1.05}
+          map={map}
+          roughness={0.55}
+          metalness={0.12}
+          color="#d8d8d8"
         />
       </mesh>
-      <mesh scale={1.018}>
-        <sphereGeometry args={[RADIUS, 64, 64]} />
-        <meshPhongMaterial
-          color="#7eb6ff"
-          transparent
-          opacity={0.07}
-          shininess={80}
-          specular="#88c4ff"
-        />
-      </mesh>
-      <mesh scale={1.12}>
-        <sphereGeometry args={[RADIUS, 64, 64]} />
+      <mesh scale={1.09}>
+        <sphereGeometry args={[RADIUS, 48, 48]} />
         <shaderMaterial
           transparent
           depthWrite={false}
           side={THREE.BackSide}
-          blending={THREE.AdditiveBlending}
           vertexShader={`
             varying vec3 vNormal;
             void main() {
@@ -105,18 +81,21 @@ function Earth({ spinning }: { spinning: boolean }) {
           fragmentShader={`
             varying vec3 vNormal;
             void main() {
-              float i = pow(0.62 - dot(vNormal, vec3(0.0, 0.0, 1.0)), 3.2);
-              gl_FragColor = vec4(0.72, 0.12, 0.1, 1.0) * i;
+              float i = pow(0.68 - dot(vNormal, vec3(0.0, 0.0, 1.0)), 4.0);
+              gl_FragColor = vec4(0.75, 0.12, 0.1, 1.0) * i * 0.55;
             }
           `}
         />
       </mesh>
-      {Object.values(cities).map((city) => (
-        <CityMarker key={city.label} lat={city.lat} lon={city.lon} />
+      {Object.entries(cities).map(([id, city]) => (
+        <mesh key={id} position={latLonToVec3(city.lat, city.lon, RADIUS + 0.01)}>
+          <sphereGeometry args={[0.016, 12, 12]} />
+          <meshBasicMaterial color="#b40000" toneMapped={false} />
+        </mesh>
       ))}
       {routes.map(([from, to, delay]) => (
-        <DeliveryArc
-          key={`${from}-${to}-${delay}`}
+        <Trail
+          key={`${from}-${to}`}
           from={cities[from]}
           to={cities[to]}
           delay={delay}
@@ -127,28 +106,7 @@ function Earth({ spinning }: { spinning: boolean }) {
   );
 }
 
-function CityMarker({ lat, lon }: { lat: number; lon: number }) {
-  const pos = useMemo(() => latLonToVec3(lat, lon, RADIUS + 0.01), [lat, lon]);
-  return (
-    <group position={pos}>
-      <mesh>
-        <sphereGeometry args={[0.018, 16, 16]} />
-        <meshBasicMaterial color="#ff2b2b" toneMapped={false} />
-      </mesh>
-      <mesh>
-        <sphereGeometry args={[0.042, 16, 16]} />
-        <meshBasicMaterial
-          color="#ff2b2b"
-          transparent
-          opacity={0.22}
-          toneMapped={false}
-        />
-      </mesh>
-    </group>
-  );
-}
-
-function DeliveryArc({
+function Trail({
   from,
   to,
   delay,
@@ -160,8 +118,7 @@ function DeliveryArc({
   animate: boolean;
 }) {
   const comet = useRef<THREE.Mesh>(null);
-  const glow = useRef<THREE.Mesh>(null);
-  const tail = useRef<THREE.Group>(null);
+  const line = useRef<THREE.Mesh>(null);
   const curve = useMemo(
     () =>
       arcCurve(
@@ -170,83 +127,39 @@ function DeliveryArc({
       ),
     [from, to],
   );
-  const { tube, glowTube } = useMemo(() => {
-    return {
-      tube: new THREE.TubeGeometry(curve, 80, 0.007, 8, false),
-      glowTube: new THREE.TubeGeometry(curve, 80, 0.02, 8, false),
-    };
-  }, [curve]);
+  const tube = useMemo(
+    () => new THREE.TubeGeometry(curve, 64, 0.008, 8, false),
+    [curve],
+  );
 
   useFrame(({ clock }) => {
-    if (!animate || !comet.current || !glow.current) return;
-    const cycle = 3.6;
-    const t = ((clock.elapsedTime + delay) % cycle) / cycle;
-    const eased = t * t * (3 - 2 * t);
-    const p = curve.getPointAt(eased);
-    comet.current.position.copy(p);
-    glow.current.position.copy(p);
-    const fade = Math.sin(t * Math.PI);
-    (comet.current.material as THREE.MeshBasicMaterial).opacity = 0.45 + fade * 0.55;
-    (glow.current.material as THREE.MeshBasicMaterial).opacity = 0.12 + fade * 0.32;
-    tail.current?.children.forEach((child, i) => {
-      const behind = Math.max(0, eased - (i + 1) * 0.028);
-      child.position.copy(curve.getPointAt(behind));
-      const mat = (child as THREE.Mesh).material as THREE.MeshBasicMaterial;
-      mat.opacity = fade * (0.42 - i * 0.07);
-    });
+    if (!animate || !comet.current || !line.current) return;
+    const t = ((clock.elapsedTime + delay) % 4.6) / 4.6;
+    const draw = t < 0.72 ? t / 0.72 : 1;
+    const fade = t < 0.78 ? 1 : Math.max(0, 1 - (t - 0.78) / 0.22);
+    tube.setDrawRange(0, Math.floor(tube.attributes.position.count * draw));
+    comet.current.position.copy(curve.getPointAt(Math.min(0.999, draw)));
+    comet.current.visible = fade > 0.05;
+    const mat = line.current.material as THREE.MeshBasicMaterial;
+    mat.opacity = 0.9 * fade;
+    const cmat = comet.current.material as THREE.MeshBasicMaterial;
+    cmat.opacity = fade;
   });
 
   return (
     <group>
-      <mesh geometry={glowTube}>
+      <mesh ref={line} geometry={tube}>
         <meshBasicMaterial
-          color="#ff3b3b"
+          color="#e10600"
           transparent
-          opacity={0.16}
-          blending={THREE.AdditiveBlending}
+          opacity={0.9}
           depthWrite={false}
           toneMapped={false}
         />
       </mesh>
-      <mesh geometry={tube}>
-        <meshBasicMaterial
-          color="#ff6a6a"
-          transparent
-          opacity={0.85}
-          blending={THREE.AdditiveBlending}
-          depthWrite={false}
-          toneMapped={false}
-        />
-      </mesh>
-      <mesh ref={glow}>
-        <sphereGeometry args={[0.055, 16, 16]} />
-        <meshBasicMaterial
-          color="#ff4d4d"
-          transparent
-          opacity={0.2}
-          blending={THREE.AdditiveBlending}
-          depthWrite={false}
-          toneMapped={false}
-        />
-      </mesh>
-      <group ref={tail}>
-        {Array.from({ length: 5 }).map((_, i) => (
-          <mesh key={i}>
-            <sphereGeometry args={[0.015 - i * 0.0016, 12, 12]} />
-            <meshBasicMaterial
-              color="#ff8a8a"
-              transparent
-              opacity={0.3}
-              blending={THREE.AdditiveBlending}
-              depthWrite={false}
-              toneMapped={false}
-            />
-          </mesh>
-        ))}
-      </group>
       <mesh ref={comet}>
-        <sphereGeometry args={[0.022, 16, 16]} />
-        <meshBasicMaterial color="#ffe7e7" toneMapped={false} />
+        <sphereGeometry args={[0.024, 12, 12]} />
+        <meshBasicMaterial color="#b40000" transparent toneMapped={false} />
       </mesh>
     </group>
   );
@@ -255,21 +168,10 @@ function DeliveryArc({
 function Scene({ spinning }: { spinning: boolean }) {
   return (
     <>
-      <color attach="background" args={["#050505"]} />
-      <ambientLight intensity={0.35} />
-      <hemisphereLight args={["#9eb7d4", "#080808", 0.55]} />
-      <directionalLight position={[6, 3.2, 4]} intensity={1.35} color="#fff6ea" />
-      <directionalLight position={[-4, -2, -3]} intensity={0.25} color="#4a6a9a" />
-      <Stars radius={80} depth={40} count={1800} factor={2.4} saturation={0} fade speed={0.3} />
+      <ambientLight intensity={0.95} />
+      <hemisphereLight args={["#ffffff", "#e6e6e6", 0.65]} />
+      <directionalLight position={[4.5, 2.8, 3.2]} intensity={1.35} color="#ffffff" />
       <Earth spinning={spinning} />
-      <OrbitControls
-        enablePan={false}
-        enableZoom={false}
-        autoRotate={false}
-        rotateSpeed={0.35}
-        minPolarAngle={Math.PI * 0.28}
-        maxPolarAngle={Math.PI * 0.72}
-      />
     </>
   );
 }
@@ -279,14 +181,17 @@ export function EarthGlobe() {
 
   return (
     <div className="relative h-full min-h-[420px] w-full">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute bottom-[10%] left-1/2 h-8 w-[58%] -translate-x-1/2 rounded-[100%] bg-black/12 blur-2xl"
+      />
       <Canvas
-        camera={{ position: [0, 0.15, 5.15], fov: 32 }}
+        camera={{ position: [0, 0.12, 4.7], fov: 34 }}
         dpr={[1, 1.5]}
-        gl={{ antialias: true, alpha: false, powerPreference: "high-performance" }}
+        gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
         resize={{ debounce: 80 }}
         onCreated={({ gl }) => {
-          gl.toneMapping = THREE.ACESFilmicToneMapping;
-          gl.toneMappingExposure = 1.12;
+          gl.setClearColor(0xffffff, 0);
           const lose = (event: Event) => event.preventDefault();
           gl.domElement.addEventListener("webglcontextlost", lose, false);
         }}
@@ -296,7 +201,7 @@ export function EarthGlobe() {
           <Scene spinning={!reduce} />
         </Suspense>
       </Canvas>
-      <p className="pointer-events-none absolute right-6 bottom-6 text-[0.62rem] tracking-[0.16em] text-white/45 uppercase">
+      <p className="pointer-events-none absolute right-2 bottom-2 text-[0.62rem] tracking-[0.16em] text-muted uppercase">
         Active delivery · 3 countries
       </p>
     </div>

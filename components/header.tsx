@@ -18,7 +18,6 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const home = (pathname.replace(/\/+$/, "") || "/") === "/";
-  const darkHero = home && !scrolled && !open;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -43,7 +42,7 @@ export function Header() {
       }`}
     >
       <div className="mx-auto flex h-[96px] max-w-[1440px] items-center justify-between px-6 sm:px-8 lg:px-14">
-        <Logo variant={darkHero ? "dark" : "light"} />
+        <Logo />
 
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">
           {nav.map((item) => (
@@ -51,11 +50,7 @@ export function Header() {
               key={item.href}
               href={item.href}
               className={`text-[0.7rem] font-medium tracking-[0.16em] uppercase transition-colors hover:text-keaas ${
-                isActive(pathname, item.href)
-                  ? "text-keaas"
-                  : darkHero
-                    ? "text-white/78"
-                    : "text-ink-2"
+                isActive(pathname, item.href) ? "text-keaas" : "text-ink-2"
               }`}
             >
               {item.label}
@@ -72,9 +67,7 @@ export function Header() {
           </Link>
           <button
             type="button"
-            className={`inline-flex h-10 w-10 items-center justify-center lg:hidden ${
-              darkHero ? "text-white" : "text-ink"
-            }`}
+            className="inline-flex h-10 w-10 items-center justify-center text-ink lg:hidden"
             aria-expanded={open}
             aria-controls="mobile-nav"
             onClick={() => setOpen((v) => !v)}
