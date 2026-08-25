@@ -81,7 +81,7 @@ export function Header() {
       <div
         id="mobile-nav"
         hidden={!open}
-        className="border-t border-line bg-paper lg:hidden"
+        className="max-h-[calc(100dvh-84px)] overflow-y-auto border-t border-line bg-paper sm:max-h-[calc(100dvh-90px)] lg:hidden"
       >
         <nav className="flex flex-col px-6 py-6" aria-label="Mobile">
           {nav.map((item) => (

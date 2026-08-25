@@ -8,7 +8,7 @@ export function Process({ hideTitle = false }: { hideTitle?: boolean }) {
       aria-labelledby={hideTitle ? undefined : "process-heading"}
       className="bg-paper"
     >
-      <Container className={hideTitle ? "pb-8 lg:pb-12" : "py-24 lg:py-32"}>
+      <Container className={hideTitle ? "pb-8 lg:pb-12" : "py-20 md:py-24 lg:py-32"}>
         {hideTitle ? null : (
           <Reveal className="max-w-3xl">
             <h2

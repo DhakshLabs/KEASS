@@ -8,7 +8,7 @@ export function Experts() {
       aria-labelledby="experts-heading"
       className="bg-mist"
     >
-      <Container className="py-24 lg:py-32">
+      <Container className="py-20 md:py-24 lg:py-32">
         <Reveal className="max-w-3xl">
           <Eyebrow>Our Experts</Eyebrow>
           <h2
@@ -25,16 +25,16 @@ export function Experts() {
           {experts.map((expert, i) => (
             <Reveal key={expert.slug} delay={i * 0.04}>
               <li className="grid gap-3 py-8 md:grid-cols-12 md:items-baseline">
-                <p className="text-[0.68rem] tracking-[0.18em] text-keaas md:col-span-2">
+                <p className="min-w-0 text-xs tracking-[0.18em] text-keaas md:col-span-2">
                   0{i + 1}
                 </p>
-                <h3 className="text-xl tracking-tight text-ink md:col-span-3">
+                <h3 className="min-w-0 break-words text-xl tracking-tight text-ink md:col-span-3">
                   {expert.role}
                 </h3>
-                <p className="text-sm text-muted md:col-span-4">
+                <p className="min-w-0 break-words text-sm text-muted md:col-span-4">
                   {expert.specialization}
                 </p>
-                <p className="text-sm text-muted md:col-span-3 md:text-right">
+                <p className="min-w-0 break-words text-sm text-muted md:col-span-3 lg:text-right">
                   {expert.experience}
                 </p>
               </li>

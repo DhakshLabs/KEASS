@@ -34,7 +34,7 @@ export default async function InsightPage({ params }: Props) {
             {article.date} · {article.readTime} read
           </p>
         </Container>
-        <div className="relative mx-auto aspect-[16/8] max-w-[1440px] overflow-hidden">
+        <div className="relative mx-auto aspect-[16/10] max-w-[1440px] overflow-hidden sm:aspect-[16/8]">
           <Image
             src={article.image}
             alt=""

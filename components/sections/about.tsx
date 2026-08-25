@@ -8,7 +8,7 @@ export function About() {
       aria-labelledby="about-heading"
       className="bg-paper"
     >
-      <Container className="grid items-end gap-14 py-24 lg:grid-cols-12 lg:py-32">
+      <Container className="grid items-end gap-14 py-20 md:py-24 lg:grid-cols-12 lg:py-32">
         <div className="lg:col-span-5 lg:pb-8">
           <Reveal>
             <Eyebrow>About KEAAS</Eyebrow>

@@ -9,7 +9,7 @@ export function Partners() {
       aria-labelledby="partners-heading"
       className="bg-ink text-white"
     >
-      <Container className="grid items-center gap-16 py-24 lg:grid-cols-12 lg:py-32">
+      <Container className="grid items-center gap-16 py-20 md:py-24 lg:grid-cols-12 lg:py-32">
         <div className="lg:col-span-6">
           <Reveal>
             <h2

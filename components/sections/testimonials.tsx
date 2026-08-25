@@ -11,7 +11,7 @@ export function Testimonials() {
       aria-labelledby="testimonials-heading"
       className="bg-paper"
     >
-      <Container className="py-24 lg:py-32">
+      <Container className="py-20 md:py-24 lg:py-32">
         <Reveal>
           <h2
             id="testimonials-heading"
@@ -26,11 +26,11 @@ export function Testimonials() {
             <blockquote className="relative">
               <span
                 aria-hidden="true"
-                className="display text-7xl leading-none text-keaas/20"
+                className="display text-5xl leading-none text-keaas/20 sm:text-7xl"
               >
                 “
               </span>
-              <p className="display -mt-8 text-2xl leading-snug text-ink sm:text-3xl md:text-[2.35rem] md:leading-[1.25]">
+              <p className="display -mt-4 break-words text-2xl leading-snug text-ink sm:-mt-8 sm:text-3xl md:text-[2.35rem] md:leading-[1.25]">
                 {featured.quote}
               </p>
               <footer className="mt-10">
