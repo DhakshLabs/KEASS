@@ -42,7 +42,7 @@ function arcCurve(from: THREE.Vector3, to: THREE.Vector3) {
 
 function Earth({ spinning }: { spinning: boolean }) {
   const group = useRef<THREE.Group>(null);
-  const spinY = useRef(2.18);
+  const spinY = useRef(-2.18);
   const map = useTexture(publicUrl("/images/earth-dark.jpg"), (tex) => {
     tex.colorSpace = THREE.NoColorSpace;
     tex.anisotropy = 8;
