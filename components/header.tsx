@@ -41,7 +41,7 @@ export function Header() {
         solid ? "bg-paper/95 shadow-[0_1px_0_#e6e6e6] backdrop-blur-md" : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex h-[96px] max-w-[1440px] items-center justify-between px-6 sm:px-8 lg:px-14">
+      <div className="mx-auto flex h-[84px] max-w-[1440px] items-center justify-between px-6 sm:h-[90px] sm:px-8 lg:px-14">
         <Logo />
 
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">

@@ -23,7 +23,7 @@ export function Process({ hideTitle = false }: { hideTitle?: boolean }) {
         )}
 
         <Reveal className={hideTitle ? "mt-4" : "mt-16 lg:mt-24"}>
-          <ol className="grid grid-cols-1 gap-10 md:grid-cols-5 md:gap-6 lg:gap-8">
+          <ol className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-5 lg:gap-8">
             {process.map((step) => (
               <li key={step.id} className="flex flex-col border-t border-keaas pt-6">
                 <p className="h-12 text-[2.6rem] leading-none font-light tracking-tight text-keaas tabular-nums">

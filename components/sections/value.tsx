@@ -17,7 +17,7 @@ export function Value() {
       aria-labelledby="value-heading"
       className="bg-keaas text-white"
     >
-      <Container className="py-20 md:py-24">
+      <Container className="py-20 lg:py-24">
         <Reveal>
           <h2
             id="value-heading"
@@ -27,12 +27,12 @@ export function Value() {
           </h2>
         </Reveal>
 
-        <div className="mt-16 grid gap-10 md:grid-cols-5 md:gap-0">
+        <div className="mt-12 grid gap-10 sm:grid-cols-2 lg:mt-16 lg:grid-cols-5 lg:gap-0">
           {propositions.map((item, i) => (
             <Reveal
               key={item.id}
               delay={i * 0.06}
-              className="border-white/20 py-2 md:border-l md:px-6 md:first:border-l-0 lg:px-8"
+              className="border-t border-white/20 pt-8 sm:px-3 lg:border-t-0 lg:border-l lg:px-6 lg:pt-2 lg:first:border-l-0 xl:px-8"
             >
               <div className="flex h-16 w-16 items-center justify-center text-white">
                 {marks[i]}

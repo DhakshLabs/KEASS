@@ -20,7 +20,7 @@ export function Difference() {
           </h2>
         </Reveal>
 
-        <div className="relative mt-20">
+        <div className="relative mt-14 sm:mt-20">
           <div
             className="pointer-events-none absolute top-[42%] right-[4%] left-[4%] hidden h-px bg-keaas/25 lg:block"
             aria-hidden="true"
