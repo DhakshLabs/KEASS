@@ -11,7 +11,7 @@ type LogoProps = {
 export function Logo({ href = "/", compact = false }: LogoProps) {
   const content = (
     <Image
-      src="/logo.png"
+      src="/KEAAS-logo.png"
       alt="KEAAS Global"
       width={compact ? 72 : 88}
       height={compact ? 72 : 88}
