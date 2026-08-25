@@ -1,7 +1,7 @@
 "use client";
 
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useTexture } from "@react-three/drei";
+import { OrbitControls, useTexture } from "@react-three/drei";
 import { Suspense, useMemo, useRef } from "react";
 import { useReducedMotion } from "framer-motion";
 import * as THREE from "three";
@@ -264,6 +264,14 @@ function Scene({ spinning }: { spinning: boolean }) {
       <hemisphereLight args={["#ffffff", "#e6e6e6", 0.65]} />
       <directionalLight position={[4.5, 2.8, 3.2]} intensity={1.35} color="#ffffff" />
       <Earth spinning={spinning} />
+      <OrbitControls
+        makeDefault
+        enablePan={false}
+        enableZoom={false}
+        enableDamping
+        dampingFactor={0.075}
+        rotateSpeed={0.55}
+      />
     </>
   );
 }
@@ -278,6 +286,7 @@ export function EarthGlobe() {
         className="pointer-events-none absolute bottom-[9%] left-1/2 h-10 w-[54%] -translate-x-1/2 rounded-[100%] bg-black/8 blur-3xl"
       />
       <Canvas
+        className="cursor-grab active:cursor-grabbing"
         camera={{ position: [0, 0.08, 5.35], fov: 34 }}
         dpr={[1, 1.5]}
         gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
@@ -294,7 +303,7 @@ export function EarthGlobe() {
         </Suspense>
       </Canvas>
       <p className="pointer-events-none absolute right-[12%] bottom-2 hidden text-[0.58rem] tracking-[0.16em] text-muted uppercase sm:block">
-        3 delivery hubs · global reach
+        Drag to rotate · 3 hubs · global reach
       </p>
     </div>
   );
