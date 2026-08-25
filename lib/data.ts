@@ -8,12 +8,26 @@ export const company = {
 };
 
 export const nav = [
-  { href: "/about", label: "About" },
+  {
+    label: "About",
+    children: [
+      { href: "/about", label: "About KEAAS" },
+      { href: "/leadership", label: "Leadership" },
+    ],
+  },
+  {
+    label: "Services",
+    children: [
+      { href: "/services/functional-experts", label: "Functional Experts" },
+      { href: "/services/technical-experts", label: "Technical Experts" },
+      { href: "/services/project-acceleration", label: "Project Acceleration" },
+      { href: "/services/managed-solutions", label: "Expert Teams" },
+    ],
+  },
   { href: "/why-keaas", label: "Why KEAAS" },
   { href: "/approach", label: "Approach" },
   { href: "/experts", label: "Experts" },
   { href: "/insights", label: "Insights" },
-  { href: "/leadership", label: "Leadership" },
 ] as const;
 
 export const propositions = [
