@@ -44,7 +44,7 @@ function Earth({ spinning }: { spinning: boolean }) {
   const group = useRef<THREE.Group>(null);
   const spinY = useRef(2.18);
   const map = useTexture(publicUrl("/images/earth-dark.jpg"), (tex) => {
-    tex.colorSpace = THREE.SRGBColorSpace;
+    tex.colorSpace = THREE.NoColorSpace;
     tex.anisotropy = 8;
   });
   const uniforms = useMemo(
@@ -84,7 +84,7 @@ function Earth({ spinning }: { spinning: boolean }) {
             void main() {
               vec3 sampleColor = texture2D(uMap, vUv).rgb;
               float luminance = dot(sampleColor, vec3(0.299, 0.587, 0.114));
-              float land = 1.0 - smoothstep(0.025, 0.105, luminance);
+              float land = 1.0 - smoothstep(0.018, 0.065, luminance);
               vec2 cell = fract(gl_FragCoord.xy / 3.25) - 0.5;
               float stipple = 1.0 - smoothstep(0.16, 0.29, length(cell));
               float landInk = mix(0.34, 1.0, stipple);
@@ -247,7 +247,7 @@ export function EarthGlobe() {
         className="pointer-events-none absolute bottom-[9%] left-1/2 h-10 w-[54%] -translate-x-1/2 rounded-[100%] bg-black/8 blur-3xl"
       />
       <Canvas
-        camera={{ position: [0, 0.08, 4.35], fov: 34 }}
+        camera={{ position: [0, 0.08, 4.75], fov: 34 }}
         dpr={[1, 1.5]}
         gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
         resize={{ debounce: 80 }}

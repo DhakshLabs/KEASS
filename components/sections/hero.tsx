@@ -54,7 +54,7 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="relative -mx-14 mt-4 h-[350px] min-[430px]:-mx-20 min-[430px]:h-[430px] sm:-mx-24 sm:h-[500px] lg:absolute lg:inset-y-[9%] lg:right-[-10%] lg:mt-0 lg:h-auto lg:w-[72%] xl:right-[-8%] xl:w-[70%]">
+        <div className="relative -mx-14 mt-4 h-[350px] min-[430px]:-mx-20 min-[430px]:h-[430px] sm:-mx-24 sm:h-[500px] lg:absolute lg:inset-y-[8%] lg:right-[-7%] lg:mt-0 lg:h-auto lg:w-[66%] xl:right-[-6%] xl:w-[65%]">
           <EarthGlobe />
         </div>
       </Container>
