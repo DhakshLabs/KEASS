@@ -247,7 +247,7 @@ export function EarthGlobe() {
         className="pointer-events-none absolute bottom-[9%] left-1/2 h-10 w-[54%] -translate-x-1/2 rounded-[100%] bg-black/8 blur-3xl"
       />
       <Canvas
-        camera={{ position: [0, 0.08, 4.75], fov: 34 }}
+        camera={{ position: [0, 0.08, 5.35], fov: 34 }}
         dpr={[1, 1.5]}
         gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
         resize={{ debounce: 80 }}
