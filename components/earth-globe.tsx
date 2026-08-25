@@ -262,7 +262,7 @@ export function EarthGlobe() {
           <Scene spinning={!reduce} />
         </Suspense>
       </Canvas>
-      <p className="pointer-events-none absolute right-[12%] bottom-1 text-[0.58rem] tracking-[0.16em] text-muted uppercase sm:bottom-2">
+      <p className="pointer-events-none absolute right-[12%] bottom-2 hidden text-[0.58rem] tracking-[0.16em] text-muted uppercase sm:block">
         Active delivery · 3 countries
       </p>
     </div>
