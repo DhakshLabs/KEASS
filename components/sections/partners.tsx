@@ -21,8 +21,8 @@ export function Partners() {
               Growth Partner
             </h2>
             <p className="mt-8 max-w-md text-base leading-8 text-white/65">
-              We partner with System Integrators to extend delivery capacity,
-              access specialized expertise and accelerate project outcomes.
+              We help global System Integrators extend delivery capacity with
+              individual SAP specialists or complete, ready-to-integrate teams.
             </p>
           </Reveal>
 

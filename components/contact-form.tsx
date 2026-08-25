@@ -77,11 +77,11 @@ export function ContactForm() {
           <option value="" disabled>
             Select a discipline
           </option>
-          <option>Functional — ERP / Finance / Supply Chain</option>
+          <option>Functional — SAP / Finance / Supply Chain</option>
           <option>Technical — Architecture / Integration / Cloud</option>
           <option>Data &amp; Analytics</option>
           <option>Programme &amp; Delivery Leadership</option>
-          <option>Managed expert cell</option>
+          <option>Complete expert team</option>
           <option>Not sure yet</option>
         </select>
       </label>

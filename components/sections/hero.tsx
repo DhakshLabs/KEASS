@@ -35,8 +35,8 @@ export function Hero() {
             <span className="text-keaas">Delivered.</span>
           </h1>
           <p className="mt-6 max-w-sm text-base leading-7 text-muted sm:text-lg sm:leading-8">
-            On-demand functional &amp; technical experts for System Integrators
-            worldwide.
+            On-demand SAP experts and complete delivery teams for System
+            Integrators worldwide.
           </p>
           <div className="mt-8 flex flex-col gap-3 min-[430px]:flex-row">
             <Link

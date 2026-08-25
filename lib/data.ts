@@ -4,7 +4,7 @@ export const company = {
   tagline: "Expertise Delivered.",
   email: "hello@keaas.com",
   description:
-    "Experts-as-a-Service company delivering on-demand functional and technical expertise to System Integrators worldwide.",
+    "Experts-as-a-Service company providing specialist talent and complete delivery teams to System Integrators worldwide.",
 };
 
 export const nav = [
@@ -20,7 +20,7 @@ export const propositions = [
   {
     id: "01",
     title: "Agile",
-    copy: "Access specialized expertise when you need it.",
+    copy: "Access one specialist or a complete team when you need it.",
   },
   {
     id: "02",
@@ -47,8 +47,8 @@ export const propositions = [
 export const differences = [
   {
     id: "01",
-    title: "Curated Experts",
-    copy: "Rigorously screened for skills, experience and cultural fit.",
+    title: "Experts & Teams",
+    copy: "Curated specialists and delivery teams, screened for skill and fit.",
   },
   {
     id: "02",
@@ -81,7 +81,7 @@ export const process = [
   {
     id: "02",
     title: "Match",
-    copy: "We identify the right expert based on domain, technology and experience.",
+    copy: "We assemble the right expert or team for the workstream.",
   },
   {
     id: "03",
@@ -91,7 +91,7 @@ export const process = [
   {
     id: "04",
     title: "Deliver",
-    copy: "Experts integrate, collaborate and deliver results.",
+    copy: "Our specialists and teams integrate, collaborate and deliver.",
   },
   {
     id: "05",
@@ -121,8 +121,8 @@ export const outcomes = [
 
 export const experts = [
   {
-    slug: "erp-consultant",
-    role: "ERP Consultant",
+    slug: "sap-consultant",
+    role: "SAP Consultant",
     experience: "15+ years typical depth",
     specialization: "SAP S/4HANA, Finance, Controlling",
     summary:
@@ -188,19 +188,19 @@ export const testimonials = [
 
 export const insights = [
   {
-    slug: "future-of-erp-2026",
+    slug: "future-of-sap-2026",
     category: "Enterprise Platforms",
-    title: "The Future of ERP: Trends Shaping 2026 and Beyond",
+    title: "The Future of SAP: Trends Shaping 2026 and Beyond",
     date: "12 March 2026",
     readTime: "8 min",
     image: "/images/insight-erp.jpg",
     excerpt:
-      "How System Integrators should prepare for composable ERP, cleaner cores and a scarcer market for true functional depth.",
+      "How System Integrators should prepare for modern SAP landscapes, cleaner cores and a scarcer market for true functional depth.",
     body: [
-      "Enterprise resource planning is no longer a single-suite conversation. System Integrators are being asked to deliver cleaner cores, more disciplined extensions and faster value stories — often with the same delivery bench they had three years ago.",
+      "SAP transformation is no longer a single-suite conversation. System Integrators are being asked to deliver cleaner cores, more disciplined extensions and faster value stories — often with the same delivery bench they had three years ago.",
       "Three forces will define 2026 and beyond. First, the move from monolithic customisation to a clean core with a governed side-by-side estate. Second, the rise of industry-specific process depth as a differentiator, not a commodity. Third, a structural shortage of consultants who have actually closed a books cycle, not merely configured a chart of accounts.",
-      "KEAAS works with SI partners who treat expertise as infrastructure. The firms that win the next wave of ERP programmes will not be those with the largest bench. They will be those who can place the right specialist, in the right workstream, at the exact moment the programme needs them.",
-      "For delivery leaders, the implication is practical. Build a thinner permanent core. Surround it with curated, on-demand depth. Measure experts by the movement of the plan, not by the hours they occupy a seat.",
+      "KEAAS works with global SI partners who treat expertise as infrastructure. The firms that win the next wave of SAP programmes will not be those with the largest bench. They will be those who can place the right specialist or complete team into the right workstream at the exact moment the programme needs them.",
+      "For delivery leaders, the implication is practical. Build a thinner permanent core. Surround it with curated, on-demand specialists and accountable teams. Measure them by the movement of the plan, not by the hours they occupy a seat.",
     ],
   },
   {
@@ -230,7 +230,7 @@ export const insights = [
       "Geography still matters. Time zones, language and regulatory context decide whether expertise lands — or merely arrives.",
     body: [
       "Global talent is not the same as interchangeable talent. A controlling specialist in Mumbai can be exactly right for a Frankfurt close — if the time-zone overlap, the language of the steering pack and the local statutory context have been designed for.",
-      "Experts-as-a-Service works when the matching logic is geographic as well as technical. KEAAS aligns specialists to the SI’s delivery theatre across India, the United Arab Emirates and the United Kingdom.",
+      "Experts-as-a-Service works when the matching logic is geographic as well as technical. KEAAS connects specialists and delivery teams through hubs in Chennai, the United Arab Emirates and Texas.",
       "The commercial effect is quiet and material. Programmes stop paying for the wrong seniority in the wrong city. Clients stop feeling the seam between the SI team and the specialist who joined in week six.",
       "Local impact is the point. Global reach is only the method.",
     ],
@@ -264,28 +264,28 @@ export const services = [
   },
   {
     slug: "managed-solutions",
-    title: "Managed Solutions",
+    title: "Expert Teams",
     summary:
-      "A curated pod of experts owned as a single, accountable extension of your delivery organisation.",
+      "A curated team of experts operating as one accountable extension of your delivery organisation.",
     detail:
-      "For SI partners running a portfolio of programmes, KEAAS can stand up a managed expert cell: a named lead, a standing bench and a shared operating cadence. You retain the client relationship. We retain the specialist quality.",
+      "For SI partners running live programmes or a delivery portfolio, KEAAS can provide a complete expert team: a named lead, complementary functional and technical specialists, and a shared operating cadence. You retain the client relationship. We own team quality, continuity and delivery readiness.",
   },
 ] as const;
 
 export const careers = [
   {
-    title: "Senior ERP Consultant — Finance",
-    location: "Remote · India / UAE / UK",
+    title: "Senior SAP Consultant — Finance",
+    location: "Remote · India / UAE / USA",
     type: "Expert network",
   },
   {
     title: "Integration Architect",
-    location: "Remote · India / UAE / UK",
+    location: "Remote · India / UAE / USA",
     type: "Expert network",
   },
   {
     title: "Partner Development Manager",
-    location: "Mumbai or Dubai",
+    location: "Chennai, Dubai or Texas",
     type: "Full-time",
   },
 ] as const;

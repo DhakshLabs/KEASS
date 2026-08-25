@@ -22,8 +22,8 @@ export function About() {
             </h2>
             <p className="mt-8 max-w-md text-base leading-8 text-muted">
               KEAAS (Knowledge &amp; Expertise as a Service) is an
-              Experts-as-a-Service company delivering on-demand functional and
-              technical expertise to System Integrators.
+              Experts-as-a-Service company providing specialist SAP talent and
+              complete delivery teams to System Integrators.
             </p>
             <p className="mt-5 max-w-md text-base leading-8 text-muted">
               We integrate seamlessly with your teams to accelerate delivery,

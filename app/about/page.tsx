@@ -5,7 +5,7 @@ import { Button, Container, PageIntro, Reveal } from "@/components/ui";
 export const metadata: Metadata = {
   title: "About KEAAS",
   description:
-    "KEAAS is an Experts-as-a-Service partner delivering on-demand functional and technical expertise to System Integrators.",
+    "KEAAS provides specialist SAP talent and complete delivery teams to System Integrators.",
 };
 
 export default function AboutPage() {
@@ -36,10 +36,11 @@ export default function AboutPage() {
           </p>
           <p className="mt-6 text-base leading-8 text-muted">
             We are not a staffing firm. We do not send generalists into live
-            programmes and hope they learn the landscape. We place curated
-            functional and technical experts who have already delivered inside
-            enterprise ecosystems — and we hold ourselves to the same operating
-            discipline as the SI partner they join.
+            programmes and hope they learn the landscape. We provide curated
+            SAP specialists or complete functional and technical teams that have
+            already delivered inside enterprise ecosystems — and we hold
+            ourselves to the same operating discipline as the SI partner they
+            join.
           </p>
           <p className="mt-6 text-base leading-8 text-muted">
             The result is quiet: workstreams move, risk reduces, and the client
