@@ -63,7 +63,7 @@ function arcCurve(from: THREE.Vector3, to: THREE.Vector3) {
 
 function Earth({ spinning }: { spinning: boolean }) {
   const group = useRef<THREE.Group>(null);
-  const spinY = useRef(-2.18);
+  const spinY = useRef(-1.4);
   const map = useTexture(publicUrl("/images/earth-dark.jpg"), (tex) => {
     tex.colorSpace = THREE.NoColorSpace;
     tex.anisotropy = 8;
@@ -207,7 +207,7 @@ function Trail({
     [from, to],
   );
   const tube = useMemo(
-    () => new THREE.TubeGeometry(curve, 96, 0.0028, 5, false),
+    () => new THREE.TubeGeometry(curve, 96, 0.003, 5, false),
     [curve],
   );
   const guide = useMemo(
@@ -233,9 +233,9 @@ function Trail({
     <group>
       <mesh geometry={guide}>
         <meshBasicMaterial
-          color="#df1713"
+          color="#d3130f"
           transparent
-          opacity={0.2}
+          opacity={0.3}
           depthWrite={false}
           toneMapped={false}
         />
@@ -244,7 +244,7 @@ function Trail({
         <meshBasicMaterial
           color="#ef1b16"
           transparent
-          opacity={0.82}
+          opacity={0.9}
           depthWrite={false}
           toneMapped={false}
         />
