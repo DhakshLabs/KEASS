@@ -9,13 +9,13 @@ import * as THREE from "three";
 const RADIUS = 1.58;
 
 const locations = {
-  london: { lat: 51.51, lon: -0.13, hub: true },
-  dubai: { lat: 25.2, lon: 55.27, hub: true },
-  mumbai: { lat: 19.08, lon: 72.88, hub: true },
+  texas: { lat: 30.27, lon: -97.74, hub: true },
+  uae: { lat: 25.2, lon: 55.27, hub: true },
+  chennai: { lat: 13.08, lon: 80.27, hub: true },
   newYork: { lat: 40.71, lon: -74.01, hub: false },
   toronto: { lat: 43.65, lon: -79.38, hub: false },
   saoPaulo: { lat: -23.55, lon: -46.63, hub: false },
-  lagos: { lat: 6.52, lon: 3.38, hub: false },
+  london: { lat: 51.51, lon: -0.13, hub: false },
   paris: { lat: 48.86, lon: 2.35, hub: false },
   johannesburg: { lat: -26.2, lon: 28.05, hub: false },
   singapore: { lat: 1.35, lon: 103.82, hub: false },
@@ -27,18 +27,18 @@ const locations = {
 } as const;
 
 const routes: [keyof typeof locations, keyof typeof locations, number][] = [
-  ["london", "newYork", 0],
-  ["london", "toronto", 0.45],
-  ["london", "saoPaulo", 0.9],
-  ["london", "lagos", 1.35],
-  ["dubai", "paris", 1.8],
-  ["dubai", "johannesburg", 2.25],
-  ["dubai", "singapore", 2.7],
-  ["dubai", "sydney", 3.15],
-  ["mumbai", "nairobi", 3.6],
-  ["mumbai", "tokyo", 4.05],
-  ["mumbai", "jakarta", 4.5],
-  ["mumbai", "sanFrancisco", 4.95],
+  ["texas", "newYork", 0],
+  ["texas", "toronto", 0.55],
+  ["texas", "saoPaulo", 1.1],
+  ["texas", "london", 1.65],
+  ["uae", "paris", 2.2],
+  ["uae", "johannesburg", 2.75],
+  ["uae", "singapore", 3.3],
+  ["uae", "sydney", 3.85],
+  ["chennai", "nairobi", 4.4],
+  ["chennai", "tokyo", 4.95],
+  ["chennai", "jakarta", 5.5],
+  ["chennai", "sanFrancisco", 6.05],
 ];
 
 function publicUrl(path: string) {
@@ -78,7 +78,7 @@ function Earth({ spinning }: { spinning: boolean }) {
 
   useFrame((_, delta) => {
     if (!group.current) return;
-    if (spinning) spinY.current += delta * 0.035;
+    if (spinning) spinY.current += delta * 0.028;
     group.current.rotation.set(0.2, spinY.current, 0.02);
   });
 
@@ -207,7 +207,7 @@ function Trail({
     [from, to],
   );
   const tube = useMemo(
-    () => new THREE.TubeGeometry(curve, 96, 0.0024, 5, false),
+    () => new THREE.TubeGeometry(curve, 96, 0.0028, 5, false),
     [curve],
   );
   const guide = useMemo(
@@ -217,14 +217,14 @@ function Trail({
 
   useFrame(({ clock }) => {
     if (!animate || !comet.current || !line.current) return;
-    const t = ((clock.elapsedTime + delay) % 6.2) / 6.2;
+    const t = ((clock.elapsedTime + delay) % 7.4) / 7.4;
     const draw = t < 0.78 ? t / 0.78 : 1;
     const fade = t < 0.82 ? 1 : Math.max(0, 1 - (t - 0.82) / 0.18);
     tube.setDrawRange(0, Math.floor(tube.attributes.position.count * draw));
     comet.current.position.copy(curve.getPointAt(Math.min(0.999, draw)));
     comet.current.visible = fade > 0.05;
     const mat = line.current.material as THREE.MeshBasicMaterial;
-    mat.opacity = 0.68 * fade;
+    mat.opacity = 0.82 * fade;
     const cmat = comet.current.material as THREE.MeshBasicMaterial;
     cmat.opacity = fade;
   });
@@ -235,7 +235,7 @@ function Trail({
         <meshBasicMaterial
           color="#df1713"
           transparent
-          opacity={0.14}
+          opacity={0.2}
           depthWrite={false}
           toneMapped={false}
         />
@@ -244,7 +244,7 @@ function Trail({
         <meshBasicMaterial
           color="#ef1b16"
           transparent
-          opacity={0.68}
+          opacity={0.82}
           depthWrite={false}
           toneMapped={false}
         />
@@ -287,7 +287,7 @@ export function EarthGlobe() {
           const lose = (event: Event) => event.preventDefault();
           gl.domElement.addEventListener("webglcontextlost", lose, false);
         }}
-        aria-label="KEAAS delivery hubs in the United Kingdom, United Arab Emirates and India connecting to the world"
+        aria-label="KEAAS delivery hubs in Chennai, the United Arab Emirates and Texas connecting to the world"
       >
         <Suspense fallback={null}>
           <Scene spinning={!reduce} />
