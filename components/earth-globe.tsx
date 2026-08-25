@@ -8,16 +8,37 @@ import * as THREE from "three";
 
 const RADIUS = 1.58;
 
-const cities = {
-  london: { lat: 51.51, lon: -0.13 },
-  dubai: { lat: 25.2, lon: 55.27 },
-  mumbai: { lat: 19.08, lon: 72.88 },
+const locations = {
+  london: { lat: 51.51, lon: -0.13, hub: true },
+  dubai: { lat: 25.2, lon: 55.27, hub: true },
+  mumbai: { lat: 19.08, lon: 72.88, hub: true },
+  newYork: { lat: 40.71, lon: -74.01, hub: false },
+  toronto: { lat: 43.65, lon: -79.38, hub: false },
+  saoPaulo: { lat: -23.55, lon: -46.63, hub: false },
+  lagos: { lat: 6.52, lon: 3.38, hub: false },
+  paris: { lat: 48.86, lon: 2.35, hub: false },
+  johannesburg: { lat: -26.2, lon: 28.05, hub: false },
+  singapore: { lat: 1.35, lon: 103.82, hub: false },
+  sydney: { lat: -33.87, lon: 151.21, hub: false },
+  nairobi: { lat: -1.29, lon: 36.82, hub: false },
+  tokyo: { lat: 35.68, lon: 139.65, hub: false },
+  jakarta: { lat: -6.21, lon: 106.85, hub: false },
+  sanFrancisco: { lat: 37.77, lon: -122.42, hub: false },
 } as const;
 
-const routes: [keyof typeof cities, keyof typeof cities, number][] = [
-  ["london", "dubai", 0],
-  ["dubai", "mumbai", 1.4],
-  ["london", "mumbai", 2.8],
+const routes: [keyof typeof locations, keyof typeof locations, number][] = [
+  ["london", "newYork", 0],
+  ["london", "toronto", 0.45],
+  ["london", "saoPaulo", 0.9],
+  ["london", "lagos", 1.35],
+  ["dubai", "paris", 1.8],
+  ["dubai", "johannesburg", 2.25],
+  ["dubai", "singapore", 2.7],
+  ["dubai", "sydney", 3.15],
+  ["mumbai", "nairobi", 3.6],
+  ["mumbai", "tokyo", 4.05],
+  ["mumbai", "jakarta", 4.5],
+  ["mumbai", "sanFrancisco", 4.95],
 ];
 
 function publicUrl(path: string) {
@@ -123,29 +144,39 @@ function Earth({ spinning }: { spinning: boolean }) {
           `}
         />
       </mesh>
-      {Object.entries(cities).map(([id, city]) => (
-        <group key={id} position={latLonToVec3(city.lat, city.lon, RADIUS + 0.018)}>
+      {Object.entries(locations).map(([id, location]) => (
+        <group
+          key={id}
+          position={latLonToVec3(location.lat, location.lon, RADIUS + 0.018)}
+        >
           <mesh>
-            <sphereGeometry args={[0.022, 16, 16]} />
-            <meshBasicMaterial color="#ef1b16" toneMapped={false} />
-          </mesh>
-          <mesh>
-            <sphereGeometry args={[0.07, 16, 16]} />
+            <sphereGeometry args={[location.hub ? 0.021 : 0.008, 12, 12]} />
             <meshBasicMaterial
-              color="#ef1b16"
+              color={location.hub ? "#ef1b16" : "#d81915"}
               transparent
-              opacity={0.18}
-              depthWrite={false}
+              opacity={location.hub ? 1 : 0.65}
               toneMapped={false}
             />
           </mesh>
+          {location.hub ? (
+            <mesh>
+              <sphereGeometry args={[0.067, 16, 16]} />
+              <meshBasicMaterial
+                color="#ef1b16"
+                transparent
+                opacity={0.16}
+                depthWrite={false}
+                toneMapped={false}
+              />
+            </mesh>
+          ) : null}
         </group>
       ))}
       {routes.map(([from, to, delay]) => (
         <Trail
           key={`${from}-${to}`}
-          from={cities[from]}
-          to={cities[to]}
+          from={locations[from]}
+          to={locations[to]}
           delay={delay}
           animate={spinning}
         />
@@ -176,24 +207,24 @@ function Trail({
     [from, to],
   );
   const tube = useMemo(
-    () => new THREE.TubeGeometry(curve, 96, 0.005, 6, false),
+    () => new THREE.TubeGeometry(curve, 96, 0.0024, 5, false),
     [curve],
   );
   const guide = useMemo(
-    () => new THREE.TubeGeometry(curve, 96, 0.003, 5, false),
+    () => new THREE.TubeGeometry(curve, 96, 0.0012, 4, false),
     [curve],
   );
 
   useFrame(({ clock }) => {
     if (!animate || !comet.current || !line.current) return;
-    const t = ((clock.elapsedTime + delay) % 5.4) / 5.4;
+    const t = ((clock.elapsedTime + delay) % 6.2) / 6.2;
     const draw = t < 0.78 ? t / 0.78 : 1;
     const fade = t < 0.82 ? 1 : Math.max(0, 1 - (t - 0.82) / 0.18);
     tube.setDrawRange(0, Math.floor(tube.attributes.position.count * draw));
     comet.current.position.copy(curve.getPointAt(Math.min(0.999, draw)));
     comet.current.visible = fade > 0.05;
     const mat = line.current.material as THREE.MeshBasicMaterial;
-    mat.opacity = 0.9 * fade;
+    mat.opacity = 0.68 * fade;
     const cmat = comet.current.material as THREE.MeshBasicMaterial;
     cmat.opacity = fade;
   });
@@ -204,7 +235,7 @@ function Trail({
         <meshBasicMaterial
           color="#df1713"
           transparent
-          opacity={0.22}
+          opacity={0.14}
           depthWrite={false}
           toneMapped={false}
         />
@@ -213,13 +244,13 @@ function Trail({
         <meshBasicMaterial
           color="#ef1b16"
           transparent
-          opacity={0.82}
+          opacity={0.68}
           depthWrite={false}
           toneMapped={false}
         />
       </mesh>
       <mesh ref={comet}>
-        <sphereGeometry args={[0.026, 12, 12]} />
+        <sphereGeometry args={[0.014, 10, 10]} />
         <meshBasicMaterial color="#ff2a24" transparent toneMapped={false} />
       </mesh>
     </group>
@@ -256,14 +287,14 @@ export function EarthGlobe() {
           const lose = (event: Event) => event.preventDefault();
           gl.domElement.addEventListener("webglcontextlost", lose, false);
         }}
-        aria-label="KEAAS delivery across India, the United Arab Emirates and the United Kingdom"
+        aria-label="KEAAS delivery hubs in the United Kingdom, United Arab Emirates and India connecting to the world"
       >
         <Suspense fallback={null}>
           <Scene spinning={!reduce} />
         </Suspense>
       </Canvas>
       <p className="pointer-events-none absolute right-[12%] bottom-2 hidden text-[0.58rem] tracking-[0.16em] text-muted uppercase sm:block">
-        Active delivery · 3 countries
+        3 delivery hubs · global reach
       </p>
     </div>
   );
