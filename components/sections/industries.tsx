@@ -23,50 +23,50 @@ import { Container, Eyebrow, Reveal } from "@/components/ui";
 import { domains, industries, skills } from "@/lib/data";
 
 const icons: Record<string, ReactNode> = {
-  landmark: <Landmark strokeWidth={1.5} className="h-5 w-5" />,
-  factory: <Factory strokeWidth={1.5} className="h-5 w-5" />,
-  fuel: <Fuel strokeWidth={1.5} className="h-5 w-5" />,
-  car: <Car strokeWidth={1.5} className="h-5 w-5" />,
-  utensils: <Utensils strokeWidth={1.5} className="h-5 w-5" />,
-  sprout: <Sprout strokeWidth={1.5} className="h-5 w-5" />,
-  wallet: <Wallet strokeWidth={1.5} className="h-5 w-5" />,
-  headset: <Headset strokeWidth={1.5} className="h-5 w-5" />,
-  "clipboard-check": <ClipboardCheck strokeWidth={1.5} className="h-5 w-5" />,
-  truck: <Truck strokeWidth={1.5} className="h-5 w-5" />,
-  user: <User strokeWidth={1.5} className="h-5 w-5" />,
-  coins: <Coins strokeWidth={1.5} className="h-5 w-5" />,
-  "trending-up": <TrendingUp strokeWidth={1.5} className="h-5 w-5" />,
-  "bar-chart": <BarChart3 strokeWidth={1.5} className="h-5 w-5" />,
-  "line-chart": <LineChart strokeWidth={1.5} className="h-5 w-5" />,
-  cog: <Cog strokeWidth={1.5} className="h-5 w-5" />,
-  brain: <Brain strokeWidth={1.5} className="h-5 w-5" />,
-  cloud: <Cloud strokeWidth={1.5} className="h-5 w-5" />,
+  landmark: <Landmark strokeWidth={1.5} className="h-4 w-4" />,
+  factory: <Factory strokeWidth={1.5} className="h-4 w-4" />,
+  fuel: <Fuel strokeWidth={1.5} className="h-4 w-4" />,
+  car: <Car strokeWidth={1.5} className="h-4 w-4" />,
+  utensils: <Utensils strokeWidth={1.5} className="h-4 w-4" />,
+  sprout: <Sprout strokeWidth={1.5} className="h-4 w-4" />,
+  wallet: <Wallet strokeWidth={1.5} className="h-4 w-4" />,
+  headset: <Headset strokeWidth={1.5} className="h-4 w-4" />,
+  "clipboard-check": <ClipboardCheck strokeWidth={1.5} className="h-4 w-4" />,
+  truck: <Truck strokeWidth={1.5} className="h-4 w-4" />,
+  user: <User strokeWidth={1.5} className="h-4 w-4" />,
+  coins: <Coins strokeWidth={1.5} className="h-4 w-4" />,
+  "trending-up": <TrendingUp strokeWidth={1.5} className="h-4 w-4" />,
+  "bar-chart": <BarChart3 strokeWidth={1.5} className="h-4 w-4" />,
+  "line-chart": <LineChart strokeWidth={1.5} className="h-4 w-4" />,
+  cog: <Cog strokeWidth={1.5} className="h-4 w-4" />,
+  brain: <Brain strokeWidth={1.5} className="h-4 w-4" />,
+  cloud: <Cloud strokeWidth={1.5} className="h-4 w-4" />,
 };
 
 export function Industries() {
-  const columns = [
+  const sets = [
     {
       title: "Industry",
+      kicker: "Where we deliver",
       items: industries,
-      tone: "bg-ink text-white",
-      heading: "text-white",
-      row: "border-white/15 text-white/90",
-      icon: "text-white",
+      header: "bg-ink text-white",
+      chip: "bg-mist text-ink",
+      icon: "text-keaas",
     },
     {
       title: "Domain",
+      kicker: "Processes we run",
       items: domains,
-      tone: "bg-paper text-ink border border-line",
-      heading: "text-ink",
-      row: "border-line text-ink-2",
+      header: "bg-keaas text-white",
+      chip: "bg-[#fff5f5] text-ink",
       icon: "text-keaas",
     },
     {
       title: "Skills",
+      kicker: "SAP capabilities",
       items: skills,
-      tone: "bg-mist text-ink border border-line",
-      heading: "text-ink",
-      row: "border-line text-ink-2",
+      header: "bg-ink-2 text-white",
+      chip: "bg-mist text-ink",
       icon: "text-keaas",
     },
   ] as const;
@@ -84,34 +84,38 @@ export function Industries() {
             id="industries-heading"
             className="display mt-5 text-4xl text-ink sm:text-5xl md:text-6xl"
           >
-            Industries, domains
+            One partner.
             <br />
-            and SAP skills.
+            Multiple capabilities.
           </h2>
           <p className="mt-6 max-w-xl text-base leading-8 text-muted">
-            The landscapes we know, the processes we run, and the SAP skills
-            System Integrators draw from.
+            Industry landscapes, process domains and SAP skills — staffed as
+            one complementary bench for System Integrators.
           </p>
         </Reveal>
 
-        <div className="mt-16 grid gap-5 lg:grid-cols-3">
-          {columns.map((column, i) => (
-            <Reveal key={column.title} delay={i * 0.08}>
-              <article className={`h-full p-8 sm:p-10 ${column.tone}`}>
-                <h3
-                  className={`text-[0.72rem] tracking-[0.22em] uppercase ${column.heading}`}
-                >
-                  {column.title}
-                </h3>
-                <ul className="mt-8">
-                  {column.items.map((item) => (
+        <div className="mt-16 grid gap-6 lg:grid-cols-3">
+          {sets.map((set, i) => (
+            <Reveal key={set.title} delay={i * 0.08} className="h-full">
+              <article className="flex h-full flex-col overflow-hidden border border-line bg-paper">
+                <header className={`px-7 py-6 ${set.header}`}>
+                  <p className="text-[0.65rem] tracking-[0.2em] uppercase opacity-70">
+                    {set.kicker}
+                  </p>
+                  <div className="mt-2 flex items-baseline justify-between gap-4">
+                    <h3 className="text-2xl tracking-tight">{set.title}</h3>
+                    <span className="text-[0.7rem] tracking-[0.16em] uppercase opacity-70">
+                      {String(set.items.length).padStart(2, "0")}
+                    </span>
+                  </div>
+                </header>
+                <ul className="flex flex-1 flex-col gap-2 p-5">
+                  {set.items.map((item) => (
                     <li
                       key={item.name}
-                      className={`flex items-center gap-4 border-t py-4 last:border-b ${column.row}`}
+                      className={`flex items-center gap-3 px-4 py-3 ${set.chip}`}
                     >
-                      <span className={`shrink-0 ${column.icon}`}>
-                        {icons[item.icon]}
-                      </span>
+                      <span className={`shrink-0 ${set.icon}`}>{icons[item.icon]}</span>
                       <span className="text-sm font-medium tracking-wide">
                         {item.name}
                       </span>

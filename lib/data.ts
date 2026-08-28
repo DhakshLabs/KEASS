@@ -48,6 +48,7 @@ export const services = [
   {
     slug: "individual-experts",
     title: "Individual Experts",
+    hook: "Access the right expertise",
     summary:
       "Highly experienced domain experts and industry veterans who join a live System Integrator programme as a precise, accountable extension of the team.",
     detail:
@@ -60,6 +61,7 @@ export const services = [
   {
     slug: "tactical-pods",
     title: "Tactical Pods",
+    hook: "Scale without adding fixed overhead",
     summary:
       "Small, cross-functional teams assigned to specific clients — a ready unit of complementary SAP skills, not a collection of résumés.",
     detail:
@@ -71,6 +73,7 @@ export const services = [
   {
     slug: "swat-team",
     title: "SWAT Team",
+    hook: "Close capability gaps fast",
     summary:
       "A specialised task force of senior consultants and solution architects, custom-fit to tackle the most critical challenges.",
     detail:

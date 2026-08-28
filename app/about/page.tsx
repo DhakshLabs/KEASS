@@ -20,10 +20,10 @@ export default function AboutPage() {
         <Reveal className="lg:col-span-6">
           <div className="relative aspect-[4/3] overflow-hidden bg-mist">
             <Image
-              src="/images/about-office.jpg"
-              alt="Indian professionals collaborating in a KEAAS delivery room"
+              src="/images/about-expertise.jpg"
+              alt="SAP consultants collaborating around a table as a delivery team"
               fill
-              className="object-cover"
+              className="object-cover object-[50%_30%]"
               sizes="(min-width: 1024px) 50vw, 100vw"
             />
           </div>
@@ -35,9 +35,9 @@ export default function AboutPage() {
             that cannot hold every scarce skill permanently.
           </p>
           <p className="mt-6 text-base leading-8 text-muted">
-            We are not a staffing firm. We provide curated SAP specialists or
-            complete functional and technical teams that have already delivered
-            inside enterprise ecosystems — and we hold ourselves to the same
+            KEAAS staffs System Integrator programmes with curated SAP
+            specialists — or complete teams — that have already delivered
+            inside enterprise ecosystems. We hold ourselves to the same
             operating discipline as the SI partner they join.
           </p>
           <p className="mt-6 text-base leading-8 text-muted">

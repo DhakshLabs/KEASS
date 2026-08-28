@@ -9,9 +9,9 @@ export const metadata: Metadata = {
 export default function ApproachPage() {
   return (
     <>
-      <PageIntro eyebrow="Approach" title="More than resources. A true extension.">
-        Eight stages from requirement gathering to weekly quality governance —
-        designed for the way System Integrators actually run programmes.
+      <PageIntro eyebrow="Approach" title="More than resources. A true partner.">
+        Partner in progress — eight stages from requirement gathering to weekly
+        quality governance.
       </PageIntro>
       <Process hideTitle />
       <Container className="pb-24">

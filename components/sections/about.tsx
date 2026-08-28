@@ -22,9 +22,9 @@ export function About() {
                 {aboutIntro}
               </p>
               <p className="mt-5 max-w-xl text-base leading-8 text-muted">
-                KEAAS provides specialist SAP talent and complete delivery teams
-                to System Integrators. We integrate with your teams to
-                accelerate delivery, reduce risk and maximise value.
+                KEAAS staffs System Integrator programmes with specialist SAP
+                talent and complete delivery teams. We integrate with your
+                teams to accelerate delivery, reduce risk and maximise value.
               </p>
               <div className="mt-10">
                 <Button href="/about">Discover KEAAS</Button>
@@ -37,10 +37,10 @@ export function About() {
               <figure>
                 <div className="img-reveal relative aspect-[4/3] overflow-hidden bg-mist">
                   <Image
-                    src="/images/about-office.jpg"
-                    alt="Indian professionals reviewing SAP delivery work in a premium enterprise office"
+                    src="/images/about-expertise.jpg"
+                    alt="SAP consultants collaborating around a table as a delivery team"
                     fill
-                    className="object-cover"
+                    className="object-cover object-[50%_30%]"
                     sizes="(min-width: 1024px) 45vw, 100vw"
                   />
                 </div>

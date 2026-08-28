@@ -1,5 +1,5 @@
 import { Container, Reveal } from "@/components/ui";
-import { process } from "@/lib/data";
+import { ProcessRoadmap } from "@/components/sections/process-roadmap";
 
 export function Process({ hideTitle = false }: { hideTitle?: boolean }) {
   return (
@@ -11,32 +11,21 @@ export function Process({ hideTitle = false }: { hideTitle?: boolean }) {
       <Container className={hideTitle ? "pb-8 lg:pb-12" : "py-20 md:py-24 lg:py-32"}>
         {hideTitle ? null : (
           <Reveal className="max-w-3xl">
+            <p className="eyebrow text-keaas">Partner in progress</p>
             <h2
               id="process-heading"
-              className="display text-4xl text-ink sm:text-5xl md:text-6xl"
+              className="display mt-5 text-4xl text-ink sm:text-5xl md:text-6xl"
             >
-              More Than Resources.
+              More than resources.
               <br />
-              A True Extension.
+              A true partner.
             </h2>
           </Reveal>
         )}
 
-        <Reveal className={hideTitle ? "mt-4" : "mt-16 lg:mt-24"}>
-          <ol className="grid grid-cols-1 gap-10 sm:grid-cols-2 xl:grid-cols-4">
-            {process.map((step) => (
-              <li key={step.id} className="flex flex-col border-t border-keaas pt-6">
-                <p className="h-12 text-[2.6rem] leading-none font-light tracking-tight text-keaas tabular-nums">
-                  {step.id}
-                </p>
-                <h3 className="mt-6 text-[0.72rem] leading-5 tracking-[0.14em] text-ink uppercase">
-                  {step.title}
-                </h3>
-                <p className="mt-3 text-sm leading-6 text-muted">{step.copy}</p>
-              </li>
-            ))}
-          </ol>
-        </Reveal>
+        <div className={hideTitle ? "mt-4" : "mt-16 lg:mt-20"}>
+          <ProcessRoadmap />
+        </div>
       </Container>
     </section>
   );
