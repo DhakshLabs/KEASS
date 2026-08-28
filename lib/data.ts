@@ -18,10 +18,9 @@ export const nav = [
   {
     label: "Services",
     children: [
-      { href: "/services/functional-experts", label: "Functional Experts" },
-      { href: "/services/technical-experts", label: "Technical Experts" },
-      { href: "/services/project-acceleration", label: "Project Acceleration" },
-      { href: "/services/managed-solutions", label: "Expert Teams" },
+      { href: "/services/individual-experts", label: "Individual Experts" },
+      { href: "/services/tactical-pods", label: "Tactical Pods" },
+      { href: "/services/swat-team", label: "SWAT Team" },
     ],
   },
   { href: "/why-keaas", label: "Why KEAAS" },
@@ -30,149 +29,242 @@ export const nav = [
   { href: "/insights", label: "Insights" },
 ] as const;
 
-export const propositions = [
+export const clients = [
+  { name: "Parrys", src: "/images/clients/parrys.png" },
+  { name: "Gmmco", src: "/images/clients/gmmco.png" },
+  { name: "Dhaksha Drones", src: "/images/clients/dhaksha.png" },
+  { name: "Leitwind", src: "/images/clients/leitwind.png" },
+  { name: "IBM", src: "/images/clients/ibm.png" },
+  { name: "Deloitte", src: "/images/clients/deloitte.png" },
+  { name: "Wipro", src: "/images/clients/wipro.png" },
+  { name: "NTT DATA Middle East", src: "/images/clients/ntt-data.png" },
+  { name: "JK Fenner", src: "/images/clients/jk-fenner.png" },
+  { name: "Violin Technologies", src: "/images/clients/violin.png" },
+  { name: "Alghanim Industries", src: "/images/clients/alghanim.png" },
+  { name: "Choithrams", src: "/images/clients/choithrams.png" },
+] as const;
+
+export const services = [
   {
-    id: "01",
-    title: "Agile",
-    copy: "Access one specialist or a complete team when you need it.",
+    slug: "individual-experts",
+    title: "Individual Experts",
+    summary:
+      "Highly experienced domain experts and industry veterans who join a live System Integrator programme as a precise, accountable extension of the team.",
+    detail:
+      "When a workstream needs one scarce SAP skill — not a bench of generalists — KEAAS places a domain expert who has already delivered the same process in an enterprise landscape. Individual Experts integrate into your operating cadence, report through your lead, and stay for the window the programme actually needs.",
+    points: [
+      "Highly experienced Domain Experts",
+      "Industry Veterans",
+    ],
   },
   {
-    id: "02",
-    title: "Integrated",
-    copy: "We work inside your delivery ecosystem.",
+    slug: "tactical-pods",
+    title: "Tactical Pods",
+    summary:
+      "Small, cross-functional teams assigned to specific clients — a ready unit of complementary SAP skills, not a collection of résumés.",
+    detail:
+      "Tactical Pods are assembled around a named client and a defined outcome. A compact mix of functional and technical specialists works as one unit inside the SI delivery system, with a shared RAID log, a named counterpart, and a cadence you already run.",
+    points: [
+      "Small, cross-functional teams assigned to specific clients",
+    ],
   },
   {
-    id: "03",
-    title: "Global",
-    copy: "Specialized talent aligned to your geography and time zone.",
-  },
-  {
-    id: "04",
-    title: "Trusted",
-    copy: "Experienced professionals with proven enterprise exposure.",
-  },
-  {
-    id: "05",
-    title: "Results",
-    copy: "Expertise that moves projects forward.",
+    slug: "swat-team",
+    title: "SWAT Team",
+    summary:
+      "A specialised task force of senior consultants and solution architects, custom-fit to tackle the most critical challenges.",
+    detail:
+      "When a programme is on the critical path — design locked, cutover slipping, or a landscape decision that cannot wait — KEAAS deploys a SWAT Team of senior consultants and solution architects. The fit is custom: the exact seniority, modules and architecture depth the situation demands, held to the same operating discipline as your own principals.",
+    points: [
+      "Specialized task force of senior consultants & solution architects",
+      "Custom fit to tackle the most critical challenges",
+    ],
   },
 ] as const;
 
-export const differences = [
+export const whyOutcomes = [
   {
-    id: "01",
-    title: "Experts & Teams",
-    copy: "Curated specialists and delivery teams, screened for skill and fit.",
+    lead: "Reduce",
+    rest: "SAP operating costs by up to",
+    emphasis: "",
+    mid: "",
+    stat: "40%",
+    trail: "while improving service quality.",
   },
   {
-    id: "02",
-    title: "Domain Depth",
-    copy: "Deep functional and technical knowledge across enterprise platforms.",
+    lead: "",
+    rest: "Free up internal teams and",
+    emphasis: "improve productivity",
+    mid: "by",
+    stat: "20–30%",
+    trail: "through optimized SAP operations.",
   },
   {
-    id: "03",
-    title: "Flexible Engagements",
-    copy: "Hourly, part-time, full-time or project-based.",
+    lead: "Accelerate SAP ROI",
+    rest: "timelines by",
+    emphasis: "",
+    mid: "",
+    stat: "30–50%",
+    trail: "with continuous optimization.",
+  },
+] as const;
+
+export const aboutIntro =
+  "Transformation specialists with deep domain experience across industries in Finance, Treasury, Material Management, Plant Maintenance, Sales & Distribution and SAP Analytics Cloud — Private and Public Cloud.";
+
+export const aboutStats = [
+  {
+    value: "28+",
+    title: "Delighted Customers Across Regions",
+    tagline: "Local Presence, Global Expertise",
   },
   {
-    id: "04",
-    title: "Seamless Integration",
-    copy: "We adapt to your processes, tools and ways of working.",
+    value: "75%",
+    title: "SAP Certified Consultants",
+    tagline: "Innovation at Core",
   },
   {
-    id: "05",
-    title: "Measurable Impact",
-    copy: "Focused on outcomes that move delivery forward.",
+    value: "45+",
+    title: "Multi Regional Industry Experts",
+    tagline: "One Commitment to Excellence",
   },
+  {
+    value: "100%",
+    title: "SLA Adherence",
+    subtitle: "Visibility of Fulfilment Status",
+    tagline: "Credibility in our DNA",
+  },
+  {
+    value: "0%",
+    title: "Right First Time — Every Time",
+    items: [
+      "Delay in Profile Submission",
+      "Escalation Focus",
+      "Tolerance on Delivery Gaps",
+      "Delay in Follow-Through",
+    ],
+    tagline: "Right First Time — Every Time",
+  },
+] as const;
+
+export const industries = [
+  { name: "Banking & Finance", icon: "landmark" },
+  { name: "Manufacturing", icon: "factory" },
+  { name: "Oil & Gas", icon: "fuel" },
+  { name: "Automotive", icon: "car" },
+  { name: "Food & Beverage", icon: "utensils" },
+  { name: "Agro Products", icon: "sprout" },
+] as const;
+
+export const domains = [
+  { name: "Finance", icon: "wallet" },
+  { name: "Human Capital", icon: "headset" },
+  { name: "Production", icon: "clipboard-check" },
+  { name: "Procurement & Logistics", icon: "truck" },
+  { name: "Sales", icon: "user" },
+] as const;
+
+export const skills = [
+  { name: "SAP FICO", icon: "coins" },
+  { name: "SAP Treasury", icon: "trending-up" },
+  { name: "SAP MM & SD", icon: "bar-chart" },
+  { name: "SAP Prod Plan", icon: "line-chart" },
+  { name: "SAP Plant Maint.", icon: "cog" },
+  { name: "SAP Business AI", icon: "brain" },
+  { name: "SAP ABAP & BTP", icon: "cloud" },
 ] as const;
 
 export const process = [
   {
     id: "01",
-    title: "Understand",
-    copy: "We understand your requirements, ecosystem and challenges.",
+    title: "Requirement Understanding",
+    copy: "Requirement gathering from the client.",
   },
   {
     id: "02",
-    title: "Match",
-    copy: "We assemble the right expert or team for the workstream.",
+    title: "Resource Mapping",
+    copy: "Mapping the right expert from in-house or our trusted expert partners.",
   },
   {
     id: "03",
-    title: "Onboard",
-    copy: "Quick onboarding and alignment with your team.",
+    title: "Internal Screening & Technical Validation",
+    copy: "Initial screening and technical evaluation using AI-based tools.",
   },
   {
     id: "04",
-    title: "Deliver",
-    copy: "Our specialists and teams integrate, collaborate and deliver.",
+    title: "Profile Submission to Client",
+    copy: "Shortlisted and validated expert profiles shared with the client.",
   },
   {
     id: "05",
-    title: "Optimize",
-    copy: "Continuous feedback to improve and scale success.",
-  },
-] as const;
-
-export const outcomes = [
-  {
-    title: "Reduce Time-to-Market",
-    copy: "Specialists join live programmes without a lengthy hiring cycle.",
+    title: "Client Interview Rounds",
+    copy: "L1, L2, Technical, and client discussions as applicable.",
   },
   {
-    title: "Optimize Delivery Capacity",
-    copy: "Scale the bench around peak demand, not permanent headcount.",
+    id: "06",
+    title: "Talent Selection by Client",
+    copy: "Client selects the candidates for role fitment.",
   },
   {
-    title: "Improve Project Margins",
-    copy: "Deploy the precise skill, for the precise window, at the right cost.",
+    id: "07",
+    title: "Onboarding & Deployment",
+    copy: "Contract signed; onboard the expert within the agreed SLA and deploy.",
   },
   {
-    title: "Access Specialized Skills Instantly",
-    copy: "SAP, integration, data and architecture expertise on demand.",
+    id: "08",
+    title: "Weekly Cadence & Quality Governance",
+    copy: "Weekly cadence for progress, delivery quality, and continuous alignment.",
   },
 ] as const;
 
 export const experts = [
   {
-    slug: "sap-consultant",
-    role: "SAP Consultant",
+    slug: "sap-fico",
+    role: "SAP FICO Consultant",
     experience: "15+ years typical depth",
-    specialization: "SAP S/4HANA, Finance, Controlling",
+    specialization: "Finance, Controlling, S/4HANA",
     summary:
       "Finance transformation workstreams for multi-country S/4HANA programmes, with depth in controlling design and close acceleration.",
   },
   {
-    slug: "technical-architect",
-    role: "Technical Architect",
+    slug: "sap-treasury",
+    role: "SAP Treasury Consultant",
     experience: "12+ years typical depth",
-    specialization: "Solution Architecture, Integration, Cloud",
+    specialization: "Treasury, Cash, Risk",
     summary:
-      "Target architectures for System Integrators delivering hybrid SAP and cloud landscapes.",
+      "Treasury operations, cash positioning and risk processes designed for live SI programmes — not slideware.",
   },
   {
-    slug: "integration-specialist",
-    role: "Integration Specialist",
+    slug: "sap-mm-sd",
+    role: "SAP MM & SD Consultant",
+    experience: "12+ years typical depth",
+    specialization: "Procurement, Inventory, Sales & Distribution",
+    summary:
+      "End-to-end materials and order-to-cash workstreams, aligned to how the client actually buys, stores and sells.",
+  },
+  {
+    slug: "sap-pp",
+    role: "SAP Production Planning Consultant",
     experience: "10+ years typical depth",
-    specialization: "SAP, APIs, Middleware",
+    specialization: "Production Planning, Manufacturing",
     summary:
-      "Integration layers across SAP BTP, middleware and partner APIs, written for operators who inherit the landscape.",
+      "Production planning specialists who have run MRP, capacity and shop-floor integration inside manufacturing landscapes.",
   },
   {
-    slug: "data-analyst",
-    role: "Data Analyst",
-    experience: "8+ years typical depth",
-    specialization: "Analytics, Reporting, Visualization",
+    slug: "sap-pm",
+    role: "SAP Plant Maintenance Consultant",
+    experience: "10+ years typical depth",
+    specialization: "Plant Maintenance, Asset Operations",
     summary:
-      "Programme data turned into decision-ready reporting, from cutover dashboards to value-tracking packs.",
+      "Maintenance and asset processes that keep plants running — from preventive plans to work-order discipline.",
   },
   {
-    slug: "project-manager",
-    role: "Project Manager",
-    experience: "12+ years typical depth",
-    specialization: "Agile, Delivery, Stakeholder Management",
+    slug: "sap-abap-btp",
+    role: "SAP ABAP & BTP Specialist",
+    experience: "10+ years typical depth",
+    specialization: "ABAP, BTP, Extensions",
     summary:
-      "Complex SI workstreams with disciplined governance, RAID control and clear stakeholder communication.",
+      "Clean-core extensions and scalable ABAP on BTP, written for the operators who inherit the landscape.",
   },
 ] as const;
 
@@ -180,23 +272,37 @@ export const testimonials = [
   {
     featured: true,
     quote:
-      "KEAAS provided us the right SAP FICO expertise at the right time. Their flexibility and quality of talent are unmatched.",
-    role: "Director of Finance Transformation",
-    company: "Global System Integrator, EMEA",
+      "We appreciate KEAAS's SAP FICO and Treasury consultant for their strong domain expertise, professionalism, and timely support in managing our financial operations.",
+    role: "SAP FICO & Treasury",
+    company: "Parrys",
   },
   {
     featured: false,
     quote:
-      "We needed a technical architect within ten days. KEAAS matched, onboarded and had the expert contributing in the second week.",
-    role: "Programme Director",
-    company: "Delivery Leadership, APAC",
+      "KEAAS's SAP MM & SD consultants provided excellent support across procurement, inventory, sales, and distribution processes with a clear understanding of our business needs.",
+    role: "SAP MM & SD",
+    company: "Dhaksha Drones",
   },
   {
     featured: false,
     quote:
-      "The reliability is what we keep coming back for. The experts work as part of our team, not as visitors on the edge of it.",
-    role: "Partner, Enterprise Applications",
-    company: "Practice Lead, Americas",
+      "We are highly satisfied with the support delivered by the SAP Plant Maintenance consultant from KEAAS in optimizing our production and maintenance processes.",
+    role: "SAP Plant Maintenance",
+    company: "Leitwind",
+  },
+  {
+    featured: false,
+    quote:
+      "KEAAS's ABAP consultant delivered scalable, innovative, and business-focused solutions that enhanced our SAP environment.",
+    role: "SAP ABAP",
+    company: "NTT DATA Middle East",
+  },
+  {
+    featured: false,
+    quote:
+      "KEAAS has consistently supplied skilled SAP consultants who are knowledgeable, adaptable, and aligned with our industry-specific requirements.",
+    role: "SAP Delivery",
+    company: "Enterprise clients",
   },
 ] as const;
 
@@ -248,41 +354,6 @@ export const insights = [
       "The commercial effect is quiet and material. Programmes stop paying for the wrong seniority in the wrong city. Clients stop feeling the seam between the SI team and the specialist who joined in week six.",
       "Local impact is the point. Global reach is only the method.",
     ],
-  },
-] as const;
-
-export const services = [
-  {
-    slug: "functional-experts",
-    title: "Functional Experts",
-    summary:
-      "Finance, controlling, supply chain, HR and industry process specialists who have delivered inside live SI programmes.",
-    detail:
-      "Functional depth is the scarcest resource on most enterprise programmes. KEAAS provides consultants who have designed, configured and stabilised processes — not merely documented them. Engagements range from a four-week design sprint to a multi-year workstream lead.",
-  },
-  {
-    slug: "technical-experts",
-    title: "Technical Experts",
-    summary:
-      "Architects, integration specialists and platform engineers who make landscapes operable.",
-    detail:
-      "From S/4HANA technical architecture to API and middleware design, KEAAS technical experts join SI teams with the discipline of an internal principal. They write for the operators who will inherit the landscape, not only for the slide that wins the next gate.",
-  },
-  {
-    slug: "project-acceleration",
-    title: "Project Acceleration",
-    summary:
-      "Targeted expertise to unblock programmes that are slipping on skill, not on intent.",
-    detail:
-      "When a workstream stalls, adding generalist capacity rarely restores the plan. KEAAS deploys a precise specialist — often within days — to recover design decisions, cutover readiness or integration defects that are holding the critical path.",
-  },
-  {
-    slug: "managed-solutions",
-    title: "Expert Teams",
-    summary:
-      "A curated team of experts operating as one accountable extension of your delivery organisation.",
-    detail:
-      "For SI partners running live programmes or a delivery portfolio, KEAAS can provide a complete expert team: a named lead, complementary functional and technical specialists, and a shared operating cadence. You retain the client relationship. We own team quality, continuity and delivery readiness.",
   },
 ] as const;
 

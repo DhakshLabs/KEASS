@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Button, Container, Reveal } from "@/components/ui";
-import { outcomes } from "@/lib/data";
+import { whyOutcomes } from "@/lib/data";
 
 export function Partners() {
   return (
@@ -27,18 +27,20 @@ export function Partners() {
           </Reveal>
 
           <div className="mt-12 grid gap-0 sm:grid-cols-2">
-            {outcomes.map((item, i) => (
-              <Reveal key={item.title} delay={i * 0.05}>
+            {whyOutcomes.map((item, i) => (
+              <Reveal key={item.stat} delay={i * 0.05}>
                 <article
                   className={`border-white/12 py-6 ${
                     i % 2 === 0 ? "sm:pr-8" : "sm:border-l sm:pl-8"
                   } ${i < 2 ? "border-b" : ""}`}
                 >
                   <h3 className="text-[0.72rem] leading-5 font-medium tracking-[0.14em] uppercase">
-                    {item.title}
+                    {item.stat}
                   </h3>
                   <p className="mt-3 text-sm leading-6 text-white/55">
-                    {item.copy}
+                    {[item.lead, item.rest, item.emphasis, item.mid, item.stat, item.trail]
+                      .filter(Boolean)
+                      .join(" ")}
                   </p>
                 </article>
               </Reveal>
@@ -57,7 +59,7 @@ export function Partners() {
             <div className="relative aspect-[4/3] overflow-hidden">
               <Image
                 src="/images/collaboration.jpg"
-                alt="Delivery partners confirming a KEAAS engagement"
+                alt="Indian delivery partners confirming a KEAAS engagement"
                 fill
                 className="object-cover"
                 sizes="(min-width: 1024px) 45vw, 100vw"

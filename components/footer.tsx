@@ -15,10 +15,9 @@ const columns = [
   {
     title: "Services",
     links: [
-      { href: "/services/functional-experts", label: "Functional Experts" },
-      { href: "/services/technical-experts", label: "Technical Experts" },
-      { href: "/services/project-acceleration", label: "Project Acceleration" },
-      { href: "/services/managed-solutions", label: "Managed Solutions" },
+      { href: "/services/individual-experts", label: "Individual Experts" },
+      { href: "/services/tactical-pods", label: "Tactical Pods" },
+      { href: "/services/swat-team", label: "SWAT Team" },
     ],
   },
   {

@@ -1,5 +1,5 @@
 import { Container, Reveal } from "@/components/ui";
-import { differences } from "@/lib/data";
+import { process } from "@/lib/data";
 
 export function Difference() {
   return (
@@ -18,36 +18,27 @@ export function Difference() {
             <br />
             A True Extension.
           </h2>
+          <p className="mt-6 max-w-xl text-base leading-8 text-muted">
+            Eight steps from the first requirement to weekly quality governance
+            — the operating system System Integrators actually run.
+          </p>
         </Reveal>
 
-        <div className="relative mt-14 sm:mt-20">
-          <div
-            className="pointer-events-none absolute top-[42%] right-[4%] left-[4%] hidden h-px bg-keaas/25 xl:block"
-            aria-hidden="true"
-          />
-
-          <ol className="grid gap-10 sm:grid-cols-2 xl:grid-cols-5 xl:gap-4">
-            {differences.map((item, i) => (
-              <Reveal key={item.id} delay={i * 0.07} className="flex justify-center">
-                <li className="relative flex w-full max-w-[230px] flex-col items-center text-center">
-                  <article className="group relative">
-                    <div className="hex mx-auto flex min-h-[210px] w-[190px] max-w-full flex-col items-center justify-center bg-paper px-7 py-6 shadow-[0_0_0_1px_#e6e6e6] transition-transform duration-300 group-hover:-translate-y-1.5">
-                      <span className="text-[0.65rem] tracking-[0.22em] text-keaas">
-                        {item.id}
-                      </span>
-                      <h3 className="mt-3 break-words text-xs leading-5 font-medium tracking-[0.12em] text-ink uppercase sm:text-[0.8rem]">
-                        {item.title}
-                      </h3>
-                      <p className="mt-3 break-words text-[0.78rem] leading-5 text-muted">
-                        {item.copy}
-                      </p>
-                    </div>
-                  </article>
-                </li>
-              </Reveal>
-            ))}
-          </ol>
-        </div>
+        <ol className="mt-16 grid gap-x-8 gap-y-12 sm:grid-cols-2 xl:grid-cols-4">
+          {process.map((step, i) => (
+            <Reveal key={step.id} delay={(i % 4) * 0.06}>
+              <li className="relative flex h-full flex-col border-t border-keaas pt-6">
+                <p className="h-12 text-[2.4rem] leading-none font-light tracking-tight text-keaas tabular-nums">
+                  {step.id}
+                </p>
+                <h3 className="mt-6 text-[0.72rem] leading-5 tracking-[0.14em] text-ink uppercase">
+                  {step.title}
+                </h3>
+                <p className="mt-3 text-sm leading-6 text-muted">{step.copy}</p>
+              </li>
+            </Reveal>
+          ))}
+        </ol>
       </Container>
     </section>
   );

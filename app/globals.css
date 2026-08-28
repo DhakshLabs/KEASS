@@ -139,6 +139,36 @@ body {
   }
 }
 
+@keyframes logo-ticker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.logo-ticker-track {
+  animation: logo-ticker 70s linear infinite;
+}
+
+.logo-ticker-mask {
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 8%,
+    #000 92%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 8%,
+    #000 92%,
+    transparent 100%
+  );
+}
+
 @keyframes image-reveal {
   from {
     clip-path: inset(8% 8% 8% 8%);
@@ -241,7 +271,8 @@ body {
   .animate-node-core,
   .animate-line-draw,
   .animate-drift,
-  .img-reveal {
+  .img-reveal,
+  .logo-ticker-track {
     animation: none !important;
   }
 }

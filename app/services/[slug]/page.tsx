@@ -27,7 +27,17 @@ export default async function ServicePage({ params }: Props) {
         {service.summary}
       </PageIntro>
       <Container className="max-w-3xl py-16">
-        <p className="text-lg leading-8 text-ink-2">{service.detail}</p>
+        <ul className="space-y-4 border-y border-line py-8">
+          {service.points.map((point) => (
+            <li
+              key={point}
+              className="border-l-2 border-keaas pl-5 text-base leading-7 text-ink-2"
+            >
+              {point}
+            </li>
+          ))}
+        </ul>
+        <p className="mt-10 text-lg leading-8 text-ink-2">{service.detail}</p>
         <div className="mt-12">
           <Button href="/contact">Request this capability</Button>
         </div>
