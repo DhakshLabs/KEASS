@@ -23,7 +23,7 @@ const iconWrap = [
   "border-white/25 text-white bg-white/10",
 ] as const;
 const rule = ["border-keaas/35", "border-white/20", "border-white/25"] as const;
-const numberTone = ["text-keaas/30", "text-white/25", "text-white/30"] as const;
+const numberTone = ["text-keaas/40", "text-white/40", "text-white/50"] as const;
 const headerRule = ["border-line", "border-white/15", "border-white/20"] as const;
 
 export function Services() {
@@ -52,22 +52,23 @@ export function Services() {
           </p>
         </div>
 
-        <div className="mt-16 grid items-stretch gap-5 lg:grid-cols-3">
-          {services.map((service, i) => (
-            <Reveal key={service.slug} delay={i * 0.08} className="h-full">
+        <Reveal>
+          <div className="mt-16 grid items-stretch gap-5 lg:grid-cols-3">
+            {services.map((service, i) => (
               <article
+                key={service.slug}
                 className={`group flex h-full flex-col border p-8 transition-transform duration-300 hover:-translate-y-1 lg:min-h-[560px] lg:p-10 ${skins[i]}`}
               >
                 <header
-                  className={`flex items-end justify-between gap-6 border-b pb-6 ${headerRule[i]}`}
+                  className={`flex h-[5.75rem] items-end justify-between gap-6 overflow-visible border-b pb-5 ${headerRule[i]}`}
                 >
                   <span
-                    className={`display block text-[4.25rem] leading-[0.8] tracking-[-0.07em] tabular-nums ${numberTone[i]}`}
+                    className={`display block text-[4.5rem] leading-none tracking-[-0.07em] tabular-nums ${numberTone[i]}`}
                   >
                     0{i + 1}
                   </span>
                   <div
-                    className={`mb-0.5 flex h-14 w-14 shrink-0 items-center justify-center border ${iconWrap[i]}`}
+                    className={`mb-1 flex h-14 w-14 shrink-0 items-center justify-center border ${iconWrap[i]}`}
                   >
                     {marks[i]}
                   </div>
@@ -101,9 +102,9 @@ export function Services() {
                   <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover/link:translate-x-1" />
                 </Link>
               </article>
-            </Reveal>
-          ))}
-        </div>
+            ))}
+          </div>
+        </Reveal>
 
         <div className="mt-12">
           <Button href="/contact">Request experts</Button>

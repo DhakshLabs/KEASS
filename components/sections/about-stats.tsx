@@ -3,10 +3,10 @@ import { aboutStats } from "@/lib/data";
 
 export function AboutStats() {
   return (
-    <div className="grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-5">
-      {aboutStats.map((stat, i) => (
-        <Reveal key={stat.value} delay={i * 0.05} className="h-full">
-          <article className="flex h-full flex-col bg-paper px-6 py-8">
+    <Reveal>
+      <div className="grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-5">
+        {aboutStats.map((stat) => (
+          <article key={stat.value} className="flex h-full flex-col bg-paper px-6 py-8">
             <p className="display flex h-14 items-end text-4xl leading-none tracking-[-0.04em] text-keaas tabular-nums sm:text-5xl">
               {stat.value}
             </p>
@@ -29,8 +29,8 @@ export function AboutStats() {
               {stat.tagline}
             </p>
           </article>
-        </Reveal>
-      ))}
-    </div>
+        ))}
+      </div>
+    </Reveal>
   );
 }
