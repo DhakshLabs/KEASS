@@ -3,11 +3,11 @@ import { whyOutcomes } from "@/lib/data";
 
 export function OutcomeCards() {
   return (
-    <div className="grid gap-5 md:grid-cols-3">
+    <div className="grid items-stretch gap-5 md:grid-cols-3">
       {whyOutcomes.map((item, i) => (
-        <Reveal key={item.stat} delay={i * 0.08}>
+        <Reveal key={item.stat} delay={i * 0.08} className="h-full">
           <article className="flex h-full flex-col border border-line bg-paper p-8 lg:p-10">
-            <p className="display text-5xl text-keaas sm:text-6xl md:text-[4.25rem]">
+            <p className="display flex h-[4.5rem] items-end whitespace-nowrap text-[2.75rem] leading-none tracking-[-0.05em] text-keaas tabular-nums sm:text-[3.15rem]">
               {item.stat}
             </p>
             <p className="mt-8 text-base leading-8 text-ink-2">

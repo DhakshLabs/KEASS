@@ -9,7 +9,7 @@ export function Why() {
   return (
     <section id="why-keaas" aria-labelledby="why-heading" className="bg-paper">
       <Container className="py-20 md:py-24 lg:py-32">
-        <div className="grid items-end gap-12 lg:grid-cols-12">
+        <div className="grid items-start gap-12 lg:grid-cols-12">
           <Reveal className="lg:col-span-7">
             <Eyebrow>Why KEAAS</Eyebrow>
             <h2

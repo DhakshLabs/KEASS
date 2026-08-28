@@ -148,6 +148,80 @@ body {
   }
 }
 
+@keyframes roadmap-dash {
+  to {
+    stroke-dashoffset: -280;
+  }
+}
+
+@keyframes roadmap-pulse {
+  0%,
+  82%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(180, 0, 0, 0);
+    border-color: #b40000;
+  }
+  88% {
+    box-shadow: 0 0 0 10px rgba(180, 0, 0, 0);
+    background: #b40000;
+    color: #fff;
+  }
+  94% {
+    box-shadow: 0 0 0 0 rgba(180, 0, 0, 0.18);
+  }
+}
+
+@keyframes rail-flow-y {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 48px;
+  }
+}
+
+@keyframes traveler-y {
+  from {
+    top: 1.5rem;
+  }
+  to {
+    top: calc(100% - 1.5rem);
+  }
+}
+
+.roadmap-stroke {
+  stroke-dasharray: 12 18;
+  animation: roadmap-dash 10s linear infinite;
+}
+
+.roadmap-node {
+  animation: roadmap-pulse 9.2s ease-in-out infinite;
+}
+
+.roadmap-rail-y {
+  background-image: linear-gradient(
+    to bottom,
+    rgba(180, 0, 0, 0.08),
+    #b40000 50%,
+    rgba(180, 0, 0, 0.08)
+  );
+  background-size: 1px 48px;
+  animation: rail-flow-y 1.6s linear infinite;
+}
+
+.roadmap-traveler-y {
+  position: absolute;
+  left: 1.5rem;
+  z-index: 2;
+  width: 9px;
+  height: 9px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: #b40000;
+  box-shadow: 0 0 0 4px rgba(180, 0, 0, 0.12);
+  animation: traveler-y 8s linear infinite;
+}
+
 .logo-ticker-track {
   animation: logo-ticker 70s linear infinite;
 }
@@ -272,7 +346,11 @@ body {
   .animate-line-draw,
   .animate-drift,
   .img-reveal,
-  .logo-ticker-track {
+  .logo-ticker-track,
+  .roadmap-stroke,
+  .roadmap-node,
+  .roadmap-rail-y,
+  .roadmap-traveler-y {
     animation: none !important;
   }
 }

@@ -104,7 +104,7 @@ export function Industries() {
                   </p>
                   <div className="mt-2 flex items-baseline justify-between gap-4">
                     <h3 className="text-2xl tracking-tight">{set.title}</h3>
-                    <span className="text-[0.7rem] tracking-[0.16em] uppercase opacity-70">
+                    <span className="text-[0.7rem] tracking-[0.16em] tabular-nums uppercase opacity-70">
                       {String(set.items.length).padStart(2, "0")}
                     </span>
                   </div>

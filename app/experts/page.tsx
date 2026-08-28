@@ -18,8 +18,8 @@ export default function ExpertsPage() {
         <ol className="divide-y divide-line border-y border-line">
           {experts.map((expert, i) => (
             <Reveal key={expert.slug} delay={i * 0.04}>
-              <li className="grid gap-4 py-10 md:grid-cols-12">
-                <p className="text-sm tracking-[0.18em] text-keaas md:col-span-2">
+              <li className="grid gap-4 py-10 md:grid-cols-12 md:items-baseline">
+                <p className="w-10 text-sm tracking-[0.18em] text-keaas tabular-nums md:col-span-2">
                   0{i + 1}
                 </p>
                 <div className="md:col-span-4">

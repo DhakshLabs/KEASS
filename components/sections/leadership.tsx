@@ -7,7 +7,7 @@ export function Leadership() {
       aria-labelledby="leadership-heading"
       className="bg-paper"
     >
-      <Container className="grid items-center gap-14 py-20 md:py-24 lg:grid-cols-12 lg:py-32">
+      <Container className="grid items-start gap-14 py-20 md:py-24 lg:grid-cols-12 lg:py-32">
         <div className="lg:col-span-6">
           <Reveal>
             <h2

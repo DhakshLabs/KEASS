@@ -25,7 +25,7 @@ export function Experts() {
           {experts.map((expert, i) => (
             <Reveal key={expert.slug} delay={i * 0.04}>
               <li className="grid gap-3 py-8 md:grid-cols-12 md:items-baseline">
-                <p className="min-w-0 text-xs tracking-[0.18em] text-keaas md:col-span-2">
+                <p className="w-10 text-xs tracking-[0.18em] text-keaas tabular-nums md:col-span-2">
                   0{i + 1}
                 </p>
                 <h3 className="min-w-0 break-words text-xl tracking-tight text-ink md:col-span-3">
