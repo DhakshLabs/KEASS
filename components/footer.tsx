@@ -10,6 +10,11 @@ const columns = [
       { href: "/why-keaas", label: "Why KEAAS" },
       { href: "/approach", label: "Approach" },
       { href: "/leadership", label: "Leadership" },
+      {
+        href: "https://kannanware.zohorecruit.in/jobs/Careers",
+        label: "Opportunities",
+        external: true,
+      },
     ],
   },
   {
@@ -48,12 +53,23 @@ export function Footer() {
             <ul className="mt-5 space-y-3">
               {column.links.map((link) => (
                 <li key={`${column.title}-${link.label}`}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-muted transition-colors hover:text-ink"
-                  >
-                    {link.label}
-                  </Link>
+                  {"external" in link && link.external ? (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-muted transition-colors hover:text-ink"
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      className="text-sm text-muted transition-colors hover:text-ink"
+                    >
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>

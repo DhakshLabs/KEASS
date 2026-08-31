@@ -30,14 +30,14 @@ export const nav = [
 ] as const;
 
 export const clients = [
+  { name: "GMMCO", src: "/images/clients/gmmco-hd.png" },
+  { name: "Choithrams", src: "/images/clients/choithrams-hd.png" },
   {
     name: "Dhaksha Drones",
     src: "/images/clients/dhaksha-hd.png",
     testimonial:
       "KEAAS's SAP MM & SD consultants provided excellent support across procurement, inventory, sales, and distribution processes with a clear understanding of our business needs.",
   },
-  { name: "GMMCO", src: "/images/clients/gmmco-hd.png" },
-  { name: "Choithrams", src: "/images/clients/choithrams-hd.png" },
   {
     name: "Leitwind",
     src: "/images/clients/leitwind-hd.png",

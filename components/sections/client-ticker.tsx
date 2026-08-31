@@ -9,15 +9,19 @@ export function ClientLogos() {
   const [activeClient, setActiveClient] = useState<string | null>(null);
 
   return (
-    <section aria-label="Selected clients" className="border-y border-line bg-paper">
-      <Container className="grid grid-cols-2 py-5 sm:grid-cols-3 sm:py-7 lg:grid-cols-6">
+    <section
+      aria-label="Selected clients"
+      className="overflow-visible border-y border-line bg-paper"
+    >
+      <Container className="overflow-visible grid grid-cols-2 py-5 sm:grid-cols-3 sm:py-7 lg:grid-cols-6">
         {clients.map((client) => {
           const hasTestimonial = "testimonial" in client;
+          const isActive = activeClient === client.name;
 
           return (
             <figure
               key={client.name}
-              className="group relative flex h-24 items-center justify-center border-line px-5 sm:h-28 sm:px-7 lg:border-l lg:first:border-l-0"
+              className="group relative z-0 flex h-24 items-center justify-center overflow-visible border-line px-5 sm:h-28 sm:px-7 lg:border-l lg:first:border-l-0"
               tabIndex={hasTestimonial ? 0 : undefined}
               onMouseEnter={() => hasTestimonial && setActiveClient(client.name)}
               onMouseLeave={() => setActiveClient(null)}
@@ -29,20 +33,23 @@ export function ClientLogos() {
                 alt={client.name}
                 width={260}
                 height={120}
-                className="max-h-14 w-auto max-w-full object-contain transition-transform duration-300 ease-out group-hover:scale-105 group-focus:scale-105 sm:max-h-16"
+                className="max-h-14 w-auto max-w-full object-contain drop-shadow-[0_2px_10px_rgba(0,0,0,0.1)] transition-transform duration-300 ease-out group-hover:scale-105 group-focus:scale-105 sm:max-h-16"
               />
               {hasTestimonial ? (
                 <figcaption
-                  className={`pointer-events-none absolute bottom-[calc(100%-0.35rem)] left-1/2 z-20 w-72 -translate-x-1/2 border border-line bg-ink px-5 py-4 text-left text-sm leading-6 text-white shadow-[0_18px_50px_rgba(0,0,0,0.2)] transition-all duration-200 ${
-                    activeClient === client.name
-                      ? "translate-y-0 opacity-100"
-                      : "translate-y-2 opacity-0"
+                  aria-hidden={!isActive}
+                  className={`pointer-events-none absolute top-[calc(100%+0.5rem)] left-1/2 z-50 w-[17.5rem] max-w-[calc(100vw-2rem)] -translate-x-1/2 border border-line bg-paper px-4 py-3.5 text-left shadow-[0_10px_28px_rgba(0,0,0,0.1)] transition-all duration-200 ${
+                    isActive
+                      ? "visible translate-y-0 opacity-100"
+                      : "invisible translate-y-1 opacity-0"
                   }`}
                 >
-                  <span className="text-keaas">“</span>
-                  {client.testimonial}
-                  <span className="text-keaas">”</span>
-                  <span className="mt-2 block text-[0.65rem] tracking-[0.14em] text-white/60 uppercase">
+                  <p className="text-[0.8125rem] leading-6 text-ink-2">
+                    <span className="text-keaas">“</span>
+                    {client.testimonial}
+                    <span className="text-keaas">”</span>
+                  </p>
+                  <span className="mt-2.5 block text-[0.625rem] tracking-[0.14em] text-muted uppercase">
                     {client.name}
                   </span>
                 </figcaption>
