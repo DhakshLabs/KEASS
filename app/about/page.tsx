@@ -19,6 +19,9 @@ export default function AboutPage() {
 
       <Container className="grid items-start gap-14 py-20 lg:grid-cols-12">
         <Reveal className="lg:col-span-6">
+          <p className="mb-6 inline-flex border-l-2 border-keaas pl-3 text-xs font-semibold tracking-[0.12em] text-ink-2 uppercase">
+            A Kannanware Group company
+          </p>
           <div className="relative aspect-[4/3] overflow-hidden bg-mist">
             <Image
               src="/images/about-expertise.jpg"

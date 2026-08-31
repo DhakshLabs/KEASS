@@ -3,13 +3,13 @@ import { Button, Container, PageIntro, Reveal } from "@/components/ui";
 import { experts } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Our Experts",
+  title: "Domain Expertise",
 };
 
 export default function ExpertsPage() {
   return (
     <>
-      <PageIntro eyebrow="Our Experts" title="Experienced. Verified. Reliable.">
+      <PageIntro eyebrow="Domain expertise" title="SAP depth for critical workstreams">
         Functional and technical disciplines System Integrators draw from.
         Every expert is screened for skill, enterprise exposure and cultural
         fit.
@@ -40,7 +40,7 @@ export default function ExpertsPage() {
         </ol>
       </Container>
       <Container className="pb-24">
-        <Button href="/contact">Request an expert</Button>
+        <Button href="/contact">Request domain expertise</Button>
       </Container>
     </>
   );

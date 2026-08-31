@@ -1,38 +1,43 @@
 import Image from "next/image";
+import { Container } from "@/components/ui";
 import { clients } from "@/lib/data";
 
-export function ClientTicker() {
+export function ClientLogos() {
   return (
-    <section
-      aria-label="Clients"
-      className="border-y border-line bg-paper"
-    >
-      <div className="logo-ticker-mask overflow-hidden py-8 sm:py-10">
-        <div className="logo-ticker-track flex w-max items-center">
-          {[0, 1].map((copy) => (
-            <div
-              key={copy}
-              className="flex items-center gap-14 pr-14 sm:gap-20 sm:pr-20"
-              aria-hidden={copy === 1}
+    <section aria-label="Selected clients" className="border-y border-line bg-paper">
+      <Container className="grid grid-cols-2 py-5 sm:grid-cols-3 sm:py-7 lg:grid-cols-6">
+        {clients.map((client) => {
+          const hasTestimonial = "testimonial" in client;
+
+          return (
+            <figure
+              key={client.name}
+              className="group relative flex h-24 items-center justify-center border-line px-5 sm:h-28 sm:px-7 lg:border-l lg:first:border-l-0"
+              tabIndex={hasTestimonial ? 0 : undefined}
             >
-              {clients.map((client) => (
-                <div
-                  key={`${copy}-${client.name}`}
-                  className="flex h-12 shrink-0 items-center sm:h-14"
+              <Image
+                src={client.src}
+                alt={client.name}
+                width={260}
+                height={120}
+                className="max-h-14 w-auto max-w-full object-contain transition-transform duration-300 ease-out group-hover:scale-105 group-focus:scale-105 sm:max-h-16"
+              />
+              {hasTestimonial ? (
+                <figcaption
+                  className="pointer-events-none absolute bottom-[calc(100%-0.35rem)] left-1/2 z-20 w-72 -translate-x-1/2 translate-y-2 border border-line bg-ink px-5 py-4 text-left text-sm leading-6 text-white opacity-0 shadow-[0_18px_50px_rgba(0,0,0,0.2)] transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100 group-focus:translate-y-0 group-focus:opacity-100"
                 >
-                  <Image
-                    src={client.src}
-                    alt={copy === 0 ? client.name : ""}
-                    width={180}
-                    height={56}
-                    className="h-8 w-auto max-w-[160px] object-contain object-left grayscale sm:h-10 sm:max-w-[200px]"
-                  />
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
-      </div>
+                  <span className="text-keaas">“</span>
+                  {client.testimonial}
+                  <span className="text-keaas">”</span>
+                  <span className="mt-2 block text-[0.65rem] tracking-[0.14em] text-white/60 uppercase">
+                    {client.name}
+                  </span>
+                </figcaption>
+              ) : null}
+            </figure>
+          );
+        })}
+      </Container>
     </section>
   );
 }

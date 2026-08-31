@@ -11,6 +11,9 @@ export function About() {
           <div className="lg:col-span-6">
             <Reveal>
               <Eyebrow>About KEAAS</Eyebrow>
+              <p className="mt-4 inline-flex border-l-2 border-keaas pl-3 text-xs font-semibold tracking-[0.12em] text-ink-2 uppercase">
+                A Kannanware Group company
+              </p>
               <h2
                 id="about-heading"
                 className="display mt-5 text-4xl text-ink sm:text-5xl md:text-[3.4rem]"

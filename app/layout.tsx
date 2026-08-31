@@ -1,14 +1,20 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Manrope, Space_Grotesk } from "next/font/google";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { company } from "@/lib/data";
 import "./globals.css";
 
-const inter = Inter({
+const manrope = Manrope({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-inter",
+  variable: "--font-manrope",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-space-grotesk",
 });
 
 export const metadata: Metadata = {
@@ -30,7 +36,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased`}>
+    <html
+      lang="en"
+      className={`${manrope.variable} ${spaceGrotesk.variable} h-full antialiased`}
+    >
       <body className="flex min-h-full flex-col overflow-x-clip font-sans">
         <a href="#main" className="skip-link">
           Skip to content

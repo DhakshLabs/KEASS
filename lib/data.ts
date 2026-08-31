@@ -25,23 +25,27 @@ export const nav = [
   },
   { href: "/why-keaas", label: "Why KEAAS" },
   { href: "/approach", label: "Approach" },
-  { href: "/experts", label: "Experts" },
+  { href: "/experts", label: "Domain expertise" },
   { href: "/insights", label: "Insights" },
 ] as const;
 
 export const clients = [
-  { name: "Parrys", src: "/images/clients/parrys.png" },
-  { name: "Gmmco", src: "/images/clients/gmmco.png" },
-  { name: "Dhaksha Drones", src: "/images/clients/dhaksha.png" },
-  { name: "Leitwind", src: "/images/clients/leitwind.png" },
-  { name: "IBM", src: "/images/clients/ibm.png" },
-  { name: "Deloitte", src: "/images/clients/deloitte.png" },
-  { name: "Wipro", src: "/images/clients/wipro.png" },
-  { name: "NTT DATA Middle East", src: "/images/clients/ntt-data.png" },
-  { name: "JK Fenner", src: "/images/clients/jk-fenner.png" },
-  { name: "Violin Technologies", src: "/images/clients/violin.png" },
-  { name: "Alghanim Industries", src: "/images/clients/alghanim.png" },
-  { name: "Choithrams", src: "/images/clients/choithrams.png" },
+  {
+    name: "Dhaksha Drones",
+    src: "/images/clients/dhaksha-hd.png",
+    testimonial:
+      "KEAAS's SAP MM & SD consultants provided excellent support across procurement, inventory, sales, and distribution processes with a clear understanding of our business needs.",
+  },
+  { name: "GMMCO", src: "/images/clients/gmmco-hd.png" },
+  { name: "Choithrams", src: "/images/clients/choithrams-hd.png" },
+  {
+    name: "Leitwind",
+    src: "/images/clients/leitwind-hd.png",
+    testimonial:
+      "We are highly satisfied with the support delivered by the SAP Plant Maintenance consultant from KEAAS in optimizing our production and maintenance processes.",
+  },
+  { name: "JK Fenner", src: "/images/clients/jk-fenner-hd.png" },
+  { name: "Alghanim Industries", src: "/images/clients/alghanim-hd.png" },
 ] as const;
 
 export const services = [
