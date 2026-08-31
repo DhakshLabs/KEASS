@@ -1,8 +1,13 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 import { Container } from "@/components/ui";
 import { clients } from "@/lib/data";
 
 export function ClientLogos() {
+  const [activeClient, setActiveClient] = useState<string | null>(null);
+
   return (
     <section aria-label="Selected clients" className="border-y border-line bg-paper">
       <Container className="grid grid-cols-2 py-5 sm:grid-cols-3 sm:py-7 lg:grid-cols-6">
@@ -14,6 +19,10 @@ export function ClientLogos() {
               key={client.name}
               className="group relative flex h-24 items-center justify-center border-line px-5 sm:h-28 sm:px-7 lg:border-l lg:first:border-l-0"
               tabIndex={hasTestimonial ? 0 : undefined}
+              onMouseEnter={() => hasTestimonial && setActiveClient(client.name)}
+              onMouseLeave={() => setActiveClient(null)}
+              onFocus={() => hasTestimonial && setActiveClient(client.name)}
+              onBlur={() => setActiveClient(null)}
             >
               <Image
                 src={client.src}
@@ -24,7 +33,11 @@ export function ClientLogos() {
               />
               {hasTestimonial ? (
                 <figcaption
-                  className="pointer-events-none absolute bottom-[calc(100%-0.35rem)] left-1/2 z-20 w-72 -translate-x-1/2 translate-y-2 border border-line bg-ink px-5 py-4 text-left text-sm leading-6 text-white opacity-0 shadow-[0_18px_50px_rgba(0,0,0,0.2)] transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100 group-focus:translate-y-0 group-focus:opacity-100"
+                  className={`pointer-events-none absolute bottom-[calc(100%-0.35rem)] left-1/2 z-20 w-72 -translate-x-1/2 border border-line bg-ink px-5 py-4 text-left text-sm leading-6 text-white shadow-[0_18px_50px_rgba(0,0,0,0.2)] transition-all duration-200 ${
+                    activeClient === client.name
+                      ? "translate-y-0 opacity-100"
+                      : "translate-y-2 opacity-0"
+                  }`}
                 >
                   <span className="text-keaas">“</span>
                   {client.testimonial}
