@@ -117,7 +117,7 @@ export const whyOutcomes = [
 ] as const;
 
 export const aboutIntro =
-  "Transformation specialists with deep domain experience across industries in Finance, Treasury, Material Management, Plant Maintenance, Sales & Distribution and SAP Analytics Cloud — Private and Public Cloud.";
+  "An entity of the Kannanware Group — transformation specialists with deep domain experience across industries in Finance, Treasury, Material Management, Plant Maintenance, Sales & Distribution and SAP Analytics Cloud — Private and Public Cloud.";
 
 export const aboutStats = [
   {
@@ -221,6 +221,40 @@ export const process = [
     id: "08",
     title: "Weekly Cadence & Quality Governance",
     copy: "Weekly cadence for progress, delivery quality, and continuous alignment.",
+  },
+] as const;
+
+export const approachPrinciples = [
+  {
+    title: "Shared operating cadence",
+    copy: "Experts join your rituals — stand-ups, RAID reviews, steering packs — not a parallel delivery lane. Onboarding is structured so the client never feels a seam.",
+  },
+  {
+    title: "Technical validation before submission",
+    copy: "Every profile passes internal screening and AI-assisted technical evaluation. You receive shortlisted candidates who have already cleared our bar.",
+  },
+  {
+    title: "Weekly quality governance",
+    copy: "Progress, delivery quality and alignment are reviewed on a fixed weekly cadence. Issues surface early; course corrections happen inside the programme, not after it.",
+  },
+] as const;
+
+export const approachCommitments = [
+  {
+    label: "Profile submission",
+    detail: "Validated expert profiles shared within agreed SLA — no delay in follow-through.",
+  },
+  {
+    label: "Deployment",
+    detail: "Contract signed; expert onboarded and deployed within the agreed window.",
+  },
+  {
+    label: "Governance",
+    detail: "Named counterpart, shared RAID log and weekly cadence from day one of deployment.",
+  },
+  {
+    label: "Accountability",
+    detail: "Right first time — every time. Zero tolerance on delivery gaps or escalation focus.",
   },
 ] as const;
 
