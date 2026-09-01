@@ -10,15 +10,19 @@ const columns = [
       { href: "/why-keaas", label: "Why KEAAS" },
       { href: "/approach", label: "Approach" },
       { href: "/leadership", label: "Leadership" },
+      {
+        href: "https://kannanware.zohorecruit.in/jobs/Careers",
+        label: "Opportunities",
+        external: true,
+      },
     ],
   },
   {
     title: "Services",
     links: [
-      { href: "/services/functional-experts", label: "Functional Experts" },
-      { href: "/services/technical-experts", label: "Technical Experts" },
-      { href: "/services/project-acceleration", label: "Project Acceleration" },
-      { href: "/services/managed-solutions", label: "Managed Solutions" },
+      { href: "/services/individual-experts", label: "Individual Experts" },
+      { href: "/services/tactical-pods", label: "Tactical Pods" },
+      { href: "/services/swat-team", label: "SWAT Team" },
     ],
   },
   {
@@ -35,8 +39,8 @@ const columns = [
 export function Footer() {
   return (
     <footer className="border-t border-line bg-paper">
-      <div className="mx-auto grid max-w-[1440px] gap-14 px-6 py-16 sm:px-8 lg:grid-cols-12 lg:px-14 lg:py-20">
-        <div className="lg:col-span-4">
+      <div className="mx-auto grid max-w-[1440px] gap-12 px-6 py-16 sm:grid-cols-2 sm:px-8 lg:grid-cols-12 lg:gap-14 lg:px-14 lg:py-20">
+        <div className="sm:col-span-2 lg:col-span-4">
           <Logo />
           <p className="mt-6 max-w-sm text-sm leading-7 text-muted">
             {company.description}
@@ -49,12 +53,23 @@ export function Footer() {
             <ul className="mt-5 space-y-3">
               {column.links.map((link) => (
                 <li key={`${column.title}-${link.label}`}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-muted transition-colors hover:text-ink"
-                  >
-                    {link.label}
-                  </Link>
+                  {"external" in link && link.external ? (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-muted transition-colors hover:text-ink"
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      className="text-sm text-muted transition-colors hover:text-ink"
+                    >
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>

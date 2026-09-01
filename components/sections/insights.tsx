@@ -13,7 +13,7 @@ export function Insights() {
       aria-labelledby="insights-heading"
       className="bg-mist"
     >
-      <Container className="py-24 lg:py-32">
+      <Container className="py-20 md:py-24 lg:py-32">
         <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
           <Reveal className="max-w-2xl">
             <Eyebrow>Insights</Eyebrow>
@@ -56,11 +56,11 @@ function ArticleBlock({
   featured?: boolean;
 }) {
   return (
-    <article className={featured ? "" : "grid gap-5 sm:grid-cols-5"}>
+    <article className={featured ? "" : "grid gap-5 md:grid-cols-5"}>
       <Link
         href={`/insights/${article.slug}`}
         className={`group relative block overflow-hidden bg-paper ${
-          featured ? "aspect-[16/10]" : "aspect-[16/11] sm:col-span-2"
+          featured ? "aspect-[16/10]" : "aspect-[16/11] md:col-span-2"
         }`}
       >
         <Image
@@ -75,13 +75,13 @@ function ArticleBlock({
             <span className="block text-[0.65rem] tracking-[0.18em] text-white/80 uppercase">
               {article.category}
             </span>
-            <span className="mt-2 block text-2xl tracking-tight md:text-3xl">
+            <span className="mt-2 block break-words text-2xl tracking-tight md:text-3xl">
               {article.title}
             </span>
           </span>
         ) : null}
       </Link>
-      <div className={featured ? "mt-5" : "sm:col-span-3"}>
+      <div className={featured ? "mt-5" : "md:col-span-3"}>
         {featured ? (
           <h3 className="sr-only">{article.title}</h3>
         ) : (

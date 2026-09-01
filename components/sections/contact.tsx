@@ -8,7 +8,7 @@ export function Contact() {
       aria-labelledby="contact-heading"
       className="border-t border-line bg-paper"
     >
-      <Container className="grid gap-14 py-24 lg:grid-cols-12 lg:py-32">
+      <Container className="grid items-start gap-14 py-20 md:py-24 lg:grid-cols-12 lg:py-32">
         <div className="lg:col-span-5">
           <h2
             id="contact-heading"
